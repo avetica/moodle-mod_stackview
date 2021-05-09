@@ -1,0 +1,25 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+# PHP PSR-2 Coding Standards
+# http://www.php-fig.org/psr/psr-2/
+
+# top-most EditorConfig file
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+charset = utf-8
+end_of_line = lf
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+
+[*.php]
+max_line_length = 120
+insert_final_newline = true
+
+[*.md]
+trim_trailing_whitespace = false
+
+[*.{yml, yaml}]
+indent_size = 2
