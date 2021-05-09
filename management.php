@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Plugin EN strings are defined here.
+ * Stack management
  *
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
@@ -23,17 +23,5 @@
  * @copyright 09/05/2021 Mfreak.nl | LdesignMedia.nl - Luuk Verhoeven
  * @author    Luuk Verhoeven
  **/
-defined('MOODLE_INTERNAL') || die;
 
-$string['pluginname'] = 'Stackviewer';
-$string['modulename'] = 'Stackviewer';
-$string['modulename_help'] = 'Scrollable stack viewer ';
-$string['modulenameplural'] = 'Stackviewer';
-$string['pluginadministration'] = 'Stackviewer administration';
-
-// Form.
-$string['form:stackviewname'] = 'Name';
-
-
-// Buttons.
-$string['btn:management'] = 'Management Stackview';
+// @TODO

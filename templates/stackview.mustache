@@ -1,0 +1,191 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @package mod_stackview
+    @copyright 09/05/2021 Mfreak.nl | LdesignMedia.nl - Luuk Verhoeven
+    @author    Luuk Verhoeven
+}}
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<style>
+    .stackviewer {
+        background: #000;
+        color: #fff;
+        border-radius:3px;
+    }
+
+    .stackviewer h2 {
+        padding: 10px 10%;
+        text-align:center;
+    }
+
+    .slick-slider {
+        border: 10px solid lightgrey;
+        width: 80%;
+        padding: 0;
+        position: relative;
+        top: 5%;
+    }
+
+    #slider {
+        background-color: #000;
+        padding: 20px 10%;
+    }
+
+    #slider img {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .slide {
+        position: relative;
+        border: none;
+    }
+
+    .slick-dots {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        list-style: none;
+        text-align: center;
+        margin: 0 3px;
+        padding: 11% 1% 11% 1.5%;
+        border-left: 3px solid lightgrey;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .slick-dots li img:nth-child(1) {
+        display: block;
+    }
+
+    .slick-dots li img:nth-child(2) {
+        display: none;
+    }
+
+    .slick-vertical .slick-slide {
+        border: none;
+    }
+
+    .slick-dots li.slick-active img:nth-child(1) {
+        display: none;
+    }
+
+    .slick-dots li.slick-active img:nth-child(2) {
+        display: block;
+    }
+
+    .slick-prev, .slick-next {
+        height: 20px;
+        width: 20px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+    }
+
+    .slick-dots li {
+        background: #999999;
+        color: #fff;
+        cursor: pointer;
+        border-radius: 3px;
+        width: 20px;
+    }
+
+    .slick-dots li.slick-active {
+        background: red;
+    }
+</style>
+<div class="stackviewer">
+    <h2>{{name}}</h2>
+    <section id="slider" class="container-fluid">
+        <div class="container slick-slider">
+            <div class="slide">
+                <img src="https://radiologyassistant.nl/assets/brain-anatomy/a5097978bb412b_13a.jpg">
+            </div>
+            <div class="slide">
+                <img src="https://radiologyassistant.nl/assets/brain-anatomy/a5097978bb4c2c_12b.jpg">
+            </div>
+            <div class="slide">
+                <img src="https://radiologyassistant.nl/assets/brain-anatomy/a5097978bb574b_12a.jpg">
+            </div>
+            <div class="slide">
+                <img src="https://radiologyassistant.nl/assets/brain-anatomy/a5097978bb619f_11b.jpg">
+            </div>
+            <div class="slide">
+                <img src="https://radiologyassistant.nl/assets/brain-anatomy/a5097978bb76ae_10b.jpg">
+            </div>
+            <div class="slide">
+                <img src="https://radiologyassistant.nl/assets/brain-anatomy/a5097978bb76ae_10b.jpg">
+            </div>
+            <div class="slide">
+                <img src="https://radiologyassistant.nl/assets/brain-anatomy/a5097978bb76ae_10b.jpg">
+            </div>
+            <div class="slide">
+                <img src="https://radiologyassistant.nl/assets/brain-anatomy/a5097978bb76ae_10b.jpg">
+            </div>
+            <div class="slide">
+                <img src="https://radiologyassistant.nl/assets/brain-anatomy/a5097978bb76ae_10b.jpg">
+            </div>
+            <div class="slide">
+                <img src="https://radiologyassistant.nl/assets/brain-anatomy/a5097978bb76ae_10b.jpg">
+            </div>
+            <div class="slide">
+                <img src="https://radiologyassistant.nl/assets/brain-anatomy/a5097978bb76ae_10b.jpg">
+            </div>
+        </div>
+    </section>
+</div>
+<script>
+        {{#js}}
+        require(['jquery', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js'], function($) {
+
+            $(document).ready(function() {
+                let slider = $('.slick-slider').slick({
+                    vertical: true,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    autoplay: false,
+                    dots: true,
+                    speed: 1,
+                    arrows: false,
+                    swipeToSlide: false,
+                    customPaging: function(slider, i) {
+                        return (++i);
+                    },
+                });
+
+                slider.on('wheel', (function(e) {
+                    e.preventDefault();
+
+                    if (e.originalEvent.deltaY > 0) {
+                        $(this).slick('slickNext');
+                    } else {
+                        $(this).slick('slickPrev');
+                    }
+
+                })).on("beforeChange", function(event, slick, currentSlide, nextSlide) {
+                    $(".slick-list").addClass("do-tans");
+                }).on("afterChange", function() {
+                    $(".slick-list").removeClass("do-tans");
+                });
+            });
+        })
+        {{/js}}
+</script>

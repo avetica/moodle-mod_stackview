@@ -5,7 +5,7 @@
 ##### Features:
 
 - GDPR null_provider
-- Scrollable images
+- Scrollable images based on https://kenwheeler.github.io/slick/
 - @TODO
 
 ##### Tested in:

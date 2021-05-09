@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Plugin EN strings are defined here.
+ * Output a stackview
  *
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
@@ -23,17 +23,44 @@
  * @copyright 09/05/2021 Mfreak.nl | LdesignMedia.nl - Luuk Verhoeven
  * @author    Luuk Verhoeven
  **/
+
+namespace mod_stackview\output;
 defined('MOODLE_INTERNAL') || die;
 
-$string['pluginname'] = 'Stackviewer';
-$string['modulename'] = 'Stackviewer';
-$string['modulename_help'] = 'Scrollable stack viewer ';
-$string['modulenameplural'] = 'Stackviewer';
-$string['pluginadministration'] = 'Stackviewer administration';
+use mod_stackview\stack;
+use renderable;
+use renderer_base;
+use templatable;
 
-// Form.
-$string['form:stackviewname'] = 'Name';
+/**
+ * Class stackview_output
+ *
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ *
+ * @package   mod_stackview
+ * @copyright 09/05/2021 Mfreak.nl | LdesignMedia.nl - Luuk Verhoeven
+ * @author    Luuk Verhoeven
+ */
+class stackview_output implements renderable, templatable {
 
+    /**
+     * @var \mod_stackview\stack
+     */
+    private $stack;
 
-// Buttons.
-$string['btn:management'] = 'Management Stackview';
+    public function __construct(stack $stack) {
+        $this->stack = $stack;
+    }
+
+    /**
+     * @param \renderer_base $output
+     *
+     * @return object
+     */
+    public function export_for_template(renderer_base $output) : object {
+
+        return (object)[
+            'name' => $this->stack->get_name()
+        ];
+    }
+}

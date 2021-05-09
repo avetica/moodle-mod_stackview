@@ -15,25 +15,22 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Plugin EN strings are defined here.
+ * We don't use the index.
  *
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  * @package   mod_stackview
- * @copyright 09/05/2021 Mfreak.nl | LdesignMedia.nl - Luuk Verhoeven
+ * @copyright 2018-12-24 MFreak.nl
  * @author    Luuk Verhoeven
  **/
+
+require_once("../../config.php");
 defined('MOODLE_INTERNAL') || die;
 
-$string['pluginname'] = 'Stackviewer';
-$string['modulename'] = 'Stackviewer';
-$string['modulename_help'] = 'Scrollable stack viewer ';
-$string['modulenameplural'] = 'Stackviewer';
-$string['pluginadministration'] = 'Stackviewer administration';
+$courseid = required_param('id', PARAM_INT);
+$PAGE->set_url('/mod/stackview/index.php', ['id' => $courseid]);
 
-// Form.
-$string['form:stackviewname'] = 'Name';
+require_login($courseid);
 
-
-// Buttons.
-$string['btn:management'] = 'Management Stackview';
+// Not used, redirect back to the course.
+redirect(new moodle_url('/course/view.php', ['id' => $courseid]));

@@ -166,3 +166,34 @@ function stackview_pluginfile(object $course, object $cm, $context, $filearea, $
     // For folder module, we force download file all the time.
     send_stored_file($file, 0, 0, true, $options);
 }
+
+/**
+ * stackview_extend_settings_navigation
+ *
+ * @param \settings_navigation $settings
+ * @param \navigation_node     $stacknode
+ *
+ * @throws \coding_exception
+ * @throws \moodle_exception
+ */
+function stackview_extend_settings_navigation(settings_navigation $settings, navigation_node $stacknode) {
+    global $PAGE;
+
+    $keys = $stacknode->get_children_key_list();
+    $beforekey = null;
+    $i = array_search('modedit', $keys, true);
+    if ($i === false and array_key_exists(0, $keys)) {
+        $beforekey = $keys[0];
+    } else if (array_key_exists($i + 1, $keys)) {
+        $beforekey = $keys[$i + 1];
+    }
+
+    if (has_capability('mod/stackview:management', $PAGE->cm->context)) {
+        $url = new moodle_url('/mod/stackview/management.php', ['cmid' => $PAGE->cm->id]);
+        $node = navigation_node::create(get_string('btn:management', 'stackview'),
+            new moodle_url($url),
+            navigation_node::TYPE_SETTING, null, 'mod_stackview_management');
+        $stacknode->add_node($node, $beforekey);
+    }
+
+}

@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Plugin EN strings are defined here.
+ * Stack model
  *
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
@@ -23,17 +23,48 @@
  * @copyright 09/05/2021 Mfreak.nl | LdesignMedia.nl - Luuk Verhoeven
  * @author    Luuk Verhoeven
  **/
+
+namespace mod_stackview;
 defined('MOODLE_INTERNAL') || die;
 
-$string['pluginname'] = 'Stackviewer';
-$string['modulename'] = 'Stackviewer';
-$string['modulename_help'] = 'Scrollable stack viewer ';
-$string['modulenameplural'] = 'Stackviewer';
-$string['pluginadministration'] = 'Stackviewer administration';
+/**
+ * Class stack
+ *
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ *
+ * @package   mod_stackview
+ * @copyright 09/05/2021 Mfreak.nl | LdesignMedia.nl - Luuk Verhoeven
+ * @author    Luuk Verhoeven
+ */
+class stack {
 
-// Form.
-$string['form:stackviewname'] = 'Name';
+    protected $record = null;
 
+    /**
+     * stack constructor.
+     *
+     * @param int         $id
+     * @param object|null $recordraw
+     *
+     * @throws \dml_exception
+     */
+    public function __construct(int $id, ?object $recordraw) {
+        global $DB;
 
-// Buttons.
-$string['btn:management'] = 'Management Stackview';
+        if ($id > 0) {
+            $this->record = $DB->get_record('stackview', ['id' => $id], '*', MUST_EXIST);
+
+            return;
+        }
+
+        $this->record = $recordraw;
+    }
+
+    /**
+     * @return string
+     */
+    public function get_name() : string{
+        return $this->record->name;
+    }
+
+}

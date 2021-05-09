@@ -37,4 +37,19 @@ defined('MOODLE_INTERNAL') || die;
  */
 class mod_stackview_renderer extends plugin_renderer_base {
 
+    /**
+     * render_stack
+     *
+     * @param \mod_stackview\stack $stack
+     *
+     * @return bool|string
+     * @throws \moodle_exception
+     */
+    public function render_stack(\mod_stackview\stack $stack) {
+        $context = (new \mod_stackview\output\stackview_output($stack))
+            ->export_for_template($this);
+
+        return $this->render_from_template('mod_stackview/stackview', $context);
+    }
+
 }
