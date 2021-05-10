@@ -23,39 +23,16 @@
     <h2>{{name}}</h2>
     <section id="slider" class="container-fluid">
         <div class="container slick-slider">
-            <div class="slide">
-                <img src="https://radiologyassistant.nl/assets/brain-anatomy/a5097978bb412b_13a.jpg">
-            </div>
-            <div class="slide">
-                <img src="https://radiologyassistant.nl/assets/brain-anatomy/a5097978bb4c2c_12b.jpg">
-            </div>
-            <div class="slide">
-                <img src="https://radiologyassistant.nl/assets/brain-anatomy/a5097978bb574b_12a.jpg">
-            </div>
-            <div class="slide">
-                <img src="https://radiologyassistant.nl/assets/brain-anatomy/a5097978bb619f_11b.jpg">
-            </div>
-            <div class="slide">
-                <img src="https://radiologyassistant.nl/assets/brain-anatomy/a5097978bb76ae_10b.jpg">
-            </div>
-            <div class="slide">
-                <img src="https://radiologyassistant.nl/assets/brain-anatomy/a5097978bb76ae_10b.jpg">
-            </div>
-            <div class="slide">
-                <img src="https://radiologyassistant.nl/assets/brain-anatomy/a5097978bb76ae_10b.jpg">
-            </div>
-            <div class="slide">
-                <img src="https://radiologyassistant.nl/assets/brain-anatomy/a5097978bb76ae_10b.jpg">
-            </div>
-            <div class="slide">
-                <img src="https://radiologyassistant.nl/assets/brain-anatomy/a5097978bb76ae_10b.jpg">
-            </div>
-            <div class="slide">
-                <img src="https://radiologyassistant.nl/assets/brain-anatomy/a5097978bb76ae_10b.jpg">
-            </div>
-            <div class="slide">
-                <img src="https://radiologyassistant.nl/assets/brain-anatomy/a5097978bb76ae_10b.jpg">
-            </div>
+            {{#files}}
+                <div class="slide">
+                    <img src="{{image}}">
+                </div>
+            {{/files}}
+            {{^files}}
+                <div class="slide">
+                    <h2>{{# str}} text:no_image, mod_stackview {{/ str}}</h2>
+                </div>
+            {{/files}}
         </div>
     </section>
 </div>

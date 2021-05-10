@@ -108,7 +108,7 @@ class stack {
         $modulecontext = context_module::instance($cm->id);
         $fs = get_file_storage();
 
-        $files = $fs->get_area_files($modulecontext->id, 'mod_stackview', 'slide', $this->get_id(),
+        $files = $fs->get_area_files($modulecontext->id, 'mod_stackview', 'slide', 0,
             'filename asc');
 
         $images = [];

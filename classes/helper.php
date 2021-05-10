@@ -41,17 +41,21 @@ final class helper {
     /**
      * Get file upload information.
      *
-     * @param int $maxfiles
+     * @param \context $context
      *
      * @return array
      */
-    public static function get_file_options(int $maxfiles = 10) : array {
+    public static function get_file_options(\context $context) : array {
         global $CFG;
 
         return [
+            'subdirs'  => 0,
+            'context'  => $context,
+            'maxfiles' => EDITOR_UNLIMITED_FILES,
             'maxbytes' => $CFG->maxbytes,
-            'subdirs' => 0,
-            'maxfiles' => $maxfiles,
+            'noclean' => 0,
+            'trusttext' => 0,
+            'autosave' => false,
             'accepted_types' => ['.png', '.jpg', '.gif', '.webp', '.tiff', '.svg'],
         ];
     }

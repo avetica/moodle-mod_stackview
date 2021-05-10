@@ -49,6 +49,7 @@ $string['btn:add'] = 'Add';
 // Text.
 $string['text:embedcode'] = 'Filter embed code: <b id="stack-code">{$a->code}</b>
                                 <span class="tooltiptext">Click to copy to clipboard</span>';
+$string['text:no_image'] = 'There are no images added.';
 
 // Form.
 $string['form:file'] = 'Select file';

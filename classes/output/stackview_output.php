@@ -60,7 +60,8 @@ class stackview_output implements renderable, templatable {
     public function export_for_template(renderer_base $output) : object {
 
         return (object)[
-            'name' => $this->stack->get_name()
+            'name' => $this->stack->get_name(),
+            'files' => $this->stack->get_images(),
         ];
     }
 }

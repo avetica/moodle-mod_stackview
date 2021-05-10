@@ -43,7 +43,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .stackviewer .slick-dots li {
   background: #999999;

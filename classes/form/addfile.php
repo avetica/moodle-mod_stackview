@@ -84,12 +84,11 @@ class addfile extends \moodleform {
      */
     protected function definition() {
         $mform = &$this->_form;
-        $mform->addElement('filepicker', 'slide',
-            get_string('form:file', 'mod_stackview'), null, helper::get_file_options());
+        $mform->addElement('filemanager', 'slide',
+            get_string('form:file', 'mod_stackview'), null, helper::get_file_options($this->_customdata['context']));
 
         $this->add_action_buttons(true, get_string('btn:add', 'mod_stackview'));
     }
-
 
     /**
      * After data
@@ -104,8 +103,8 @@ class addfile extends \moodleform {
             $this->modulecontext->id,
             'mod_stackview',
             'slide',
-            $this->stack->get_id(),
-            helper::get_file_options()
+            0,
+            helper::get_file_options($this->modulecontext)
         );
 
         // Set data.

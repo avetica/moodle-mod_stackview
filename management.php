@@ -87,8 +87,8 @@ switch ($action) {
                 $modulecontext->id,
                 'mod_stackview',
                 'slide',
-                $stack->get_id(),
-                helper::get_file_options());
+                0,
+                helper::get_file_options($modulecontext));
 
             redirect($baseurl);
         }
