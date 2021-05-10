@@ -10,8 +10,9 @@ With the Stackview module you can create a scrollable images activity.
 - Scrollable images based on https://kenwheeler.github.io/slick/ tweaked to allow scrolling.
 - Images upload by separate capability.
 - Order is based on image names.
-- There is an additional filter that can be used for embedding.
-- Embedding sample.
+- There is an additional filter (filter_stackview) that can be used for embedding.
+- Manual embedding sample below.
+
 ```text
 <iframe src="/mod/stackview/view.php?id=68&action=embedded" width="600" height="600" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>```
 ```
