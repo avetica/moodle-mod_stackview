@@ -40,4 +40,4 @@ $string['btn:management'] = 'Management Stackview';
 
 // Text.
 $string['text:embedcode'] = 'Filter embed code: <b id="stack-code">{$a->code}</b>
-                                <span class="tooltiptext">Copy to clipboard</span>';
+                                <span class="tooltiptext">Click to copy to clipboard</span>';
