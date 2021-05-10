@@ -30,14 +30,29 @@ $string['modulename'] = 'Stackviewer';
 $string['modulename_help'] = 'Scrollable stack viewer ';
 $string['modulenameplural'] = 'Stackviewer';
 $string['pluginadministration'] = 'Stackviewer administration';
+$string['privacy:metadata'] = 'The mod_stackview plugin does not store any personal data.';
 
 // Form.
 $string['form:stackviewname'] = 'Name';
 
+// Heading.
+$string['thead:icon'] = 'Image';
+$string['thead:name'] = 'Name';
+$string['thead:action'] = 'Action';
 
 // Buttons.
 $string['btn:management'] = 'Management Stackview';
+$string['btn:confirm'] = 'Yes';
+$string['btn:cancel'] = 'Cancel';
+$string['btn:add'] = 'Add';
 
 // Text.
 $string['text:embedcode'] = 'Filter embed code: <b id="stack-code">{$a->code}</b>
                                 <span class="tooltiptext">Click to copy to clipboard</span>';
+
+// Form.
+$string['form:file'] = 'Select file';
+
+// Javascript.
+$string['js:confirm_delete_title'] = 'Delete item';
+$string['js:confirm_delete_message'] = 'Are you sure you want to delete this item?';

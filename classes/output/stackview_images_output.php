@@ -28,6 +28,7 @@ namespace mod_stackview\output;
 defined('MOODLE_INTERNAL') || die;
 
 use mod_stackview\stack;
+use moodle_url;
 use renderable;
 use renderer_base;
 use templatable;
@@ -56,11 +57,19 @@ class stackview_images_output implements renderable, templatable {
      * @param \renderer_base $output
      *
      * @return object
+     * @throws \coding_exception
+     * @throws \moodle_exception
      */
     public function export_for_template(renderer_base $output) : object {
+        global $PAGE;
+        $params = $PAGE->url->params();
 
         return (object)[
-            'name' => $this->stack->get_name()
+            'name' => $this->stack->get_name(),
+            'files' => $this->stack->get_images(),
+            'addurl' => (new moodle_url('/mod/stackview/management.php', ['action' => 'add'] + $params))
+                ->out(false),
         ];
     }
+
 }

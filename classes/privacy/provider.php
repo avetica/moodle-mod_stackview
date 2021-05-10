@@ -15,44 +15,37 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- *
- *
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- *
- * @package   mod_stackview
- * @copyright 09/05/2021 Mfreak.nl | LdesignMedia.nl - Luuk Verhoeven
- * @author    Luuk Verhoeven
- **/
-
-namespace mod_stackview;
-defined('MOODLE_INTERNAL') || die;
-
-/**
- * Class helper
+ * Privacy Subsystem implementation for mod_stackview.
  *
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
- * @package   mod_stackview
- * @copyright 09/05/2021 Mfreak.nl | LdesignMedia.nl - Luuk Verhoeven
+ * @package   filter_stackview
+ * @copyright 10/05/2021 Mfreak.nl | LdesignMedia.nl - Luuk Verhoeven
  * @author    Luuk Verhoeven
  */
-final class helper {
+
+namespace mod_stackview\privacy;
+
+defined('MOODLE_INTERNAL') || die();
+
+/**
+ * Privacy Subsystem for filter_stackview implementing null_provider.
+ *
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ *
+ * @package   mod_stackview
+ * @copyright 10/05/2021 Mfreak.nl | LdesignMedia.nl - Luuk Verhoeven
+ * @author    Luuk Verhoeven
+ */
+class provider implements \core_privacy\local\metadata\null_provider {
 
     /**
-     * Get file upload information.
+     * Get the language string identifier with the component's language
+     * file to explain why this plugin stores no data.
      *
-     * @param int $maxfiles
-     *
-     * @return array
+     * @return  string
      */
-    public static function get_file_options(int $maxfiles = 10) : array {
-        global $CFG;
-
-        return [
-            'maxbytes' => $CFG->maxbytes,
-            'subdirs' => 0,
-            'maxfiles' => $maxfiles,
-            'accepted_types' => ['.png', '.jpg', '.gif', '.webp', '.tiff', '.svg'],
-        ];
+    public static function get_reason() : string {
+        return 'privacy:metadata';
     }
 }

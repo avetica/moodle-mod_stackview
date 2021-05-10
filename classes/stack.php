@@ -25,6 +25,10 @@
  **/
 
 namespace mod_stackview;
+
+use context_module;
+use moodle_url;
+
 defined('MOODLE_INTERNAL') || die;
 
 /**
@@ -61,6 +65,8 @@ class stack {
     }
 
     /**
+     * get_name
+     *
      * @return string
      */
     public function get_name() : string {
@@ -68,13 +74,72 @@ class stack {
     }
 
     /**
+     * get_filter_code
+     *
      * @return string
      * @throws \coding_exception
      */
     public function get_filter_code() : string {
         return get_string('text:embedcode', 'mod_stackview', (object)[
-            'code' => '[[stackview ' . $this->record->id . ']]',
+            'code' => '[[stackview ' . $this->get_id() . ']]',
         ]);
+    }
+
+    /**
+     * get_id
+     *
+     * @return int
+     */
+    public function get_id() : int {
+        return $this->record->id;
+    }
+
+    /**
+     * get_images
+     *
+     * @return array
+     * @throws \coding_exception
+     */
+    public function get_images() : array {
+
+        $cm = get_coursemodule_from_instance('stackview', $this->get_id(), $this->get_course(),
+            false, MUST_EXIST);
+
+        $modulecontext = context_module::instance($cm->id);
+        $fs = get_file_storage();
+
+        $files = $fs->get_area_files($modulecontext->id, 'mod_stackview', 'slide', $this->get_id(),
+            'filename asc');
+
+        $images = [];
+        foreach ($files as $file) {
+
+            if ($file->is_valid_image() === false) {
+                continue;
+            }
+
+            $images[] = [
+                'fileid' => $file->get_id(),
+                'filename' => $file->get_filename(),
+                'image' => moodle_url::make_pluginfile_url(
+                    $file->get_contextid(),
+                    $file->get_component(),
+                    $file->get_filearea(),
+                    $file->get_itemid(),
+                    $file->get_filepath(),
+                    $file->get_filename()
+                ),
+            ];
+        }
+
+        return $images;
+    }
+
+    /**
+     * @return int
+     */
+    private function get_course() : int {
+        return $this->record->course;
     }
 
 }

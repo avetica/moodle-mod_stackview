@@ -24,15 +24,18 @@
  * @author    Luuk Verhoeven
  **/
 
+use mod_stackview\helper;
+
 require(__DIR__ . '/../../config.php');
 require_once(__DIR__ . '/lib.php');
 defined('MOODLE_INTERNAL') || die;
 
 // Course_module ID.
-$id = required_param('cmid', PARAM_INT);
+$cmid = required_param('cmid', PARAM_INT);
 $action = optional_param('action', '', PARAM_ALPHA);
+$fileid = optional_param('fileid', false, PARAM_INT);
 
-$cm = get_coursemodule_from_id('stackview', $id, 0, false, MUST_EXIST);
+$cm = get_coursemodule_from_id('stackview', $cmid, 0, false, MUST_EXIST);
 $course = $DB->get_record('course', ['id' => $cm->course], '*', MUST_EXIST);
 $stackview = $DB->get_record('stackview', ['id' => $cm->instance], '*', MUST_EXIST);
 
@@ -43,9 +46,10 @@ require_capability('mod/stackview:management', $modulecontext);
 
 // Load stack instance.
 $stack = new \mod_stackview\stack(0, $stackview);
-$PAGE->set_url('/mod/stackview/view.php', [
-    'id' => $cm->id,
+$PAGE->set_url('/mod/stackview/management.php', [
+    'cmid' => $cm->id,
     'action' => $action,
+    'fileid' => $fileid,
 ]);
 
 $PAGE->set_title(format_string($stackview->name));
@@ -56,9 +60,42 @@ $renderer = $PAGE->get_renderer('mod_stackview');
 
 $PAGE->requires->js_call_amd('mod_stackview/stackview', 'init', [[]]);
 
+$baseurl = clone $PAGE->url;
+$baseurl->param('action', '');
+$baseurl->param('id', '');
+
 switch ($action) {
 
-    case 'edit':
+    case 'delete':
+
+        break;
+
+    case 'add':
+
+        $form = new \mod_stackview\form\addfile($PAGE->url, [
+            'context' => $modulecontext,
+            'stack' => $stack,
+        ]);
+
+        if ($form->is_cancelled()) {
+            redirect($baseurl);
+        }
+
+        if (($data = $form->get_data()) != false) {
+            file_save_draft_area_files(
+                $data->slide,
+                $modulecontext->id,
+                'mod_stackview',
+                'slide',
+                $stack->get_id(),
+                helper::get_file_options());
+
+            redirect($baseurl);
+        }
+
+        echo $OUTPUT->header();
+        echo $form->render();
+        echo $OUTPUT->footer();
 
         break;
 

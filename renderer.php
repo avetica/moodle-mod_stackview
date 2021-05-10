@@ -82,8 +82,7 @@ class mod_stackview_renderer extends plugin_renderer_base {
         $context = (new \mod_stackview\output\stackview_images_output($stack))
             ->export_for_template($this);
 
-        return $this->render_from_template('mod_stackview/stackview', $context);
+        return $this->render_from_template('mod_stackview/stackview_table', $context);
     }
-
 
 }
