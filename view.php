@@ -62,7 +62,7 @@ $event->add_record_snapshot('stackview', $stackview);
 $event->trigger();
 
 // Load stack instance.
-$stack = new \mod_stackview\stack(0 , $stackview);
+$stack = new \mod_stackview\stack(0, $stackview);
 
 $PAGE->set_url('/mod/stackview/view.php', [
     'id' => $cm->id,
@@ -76,14 +76,24 @@ $PAGE->set_context($modulecontext);
 
 $renderer = $PAGE->get_renderer('mod_stackview');
 
+$PAGE->requires->js_call_amd('mod_stackview/stackview', 'init', [
+    [],
+]);
+
 switch ($action) {
     case 'embedded':
 
+        $PAGE->set_pagelayout('popup');
+
+        echo $OUTPUT->header();
+        echo $renderer->render_stack($stack);
+        echo $OUTPUT->footer();
         break;
 
     default:
 
         echo $OUTPUT->header();
         echo $renderer->render_stack($stack);
+        echo $renderer->show_filter_code($stack);
         echo $OUTPUT->footer();
 }

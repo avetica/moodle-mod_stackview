@@ -1,0 +1,135 @@
+// https://www.sassmeister.com/
+// File watcher can be used in PhpStorm  (https://www.dropbox.com/s/uuf5mg0k8si6d54/2021-05-10_11-00-58.png?dl=0)
+
+@import 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css';
+
+.stackviewer {
+    background: #000;
+    color: #fff;
+    border-radius: 3px;
+
+    h2 {
+        padding: 10px 10%;
+        text-align: center;
+    }
+
+    .slick-slider {
+        border: 10px solid lightgrey;
+        width: 80%;
+        padding: 0;
+        position: relative;
+        top: 5%;
+    }
+
+    #slider {
+        background-color: #000;
+        padding: 20px 10%;
+        cursor: ns-resize;
+    }
+
+    #slider img {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .slide {
+        position: relative;
+        border: none;
+    }
+
+    .slick-dots {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        list-style: none;
+        text-align: center;
+        margin: 0 3px;
+        padding: 11% 1% 11% 1.5%;
+        border-left: 3px solid lightgrey;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        li {
+            background: #999999;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 3px;
+            width: 20px;
+        }
+
+        li.slick-active {
+            background: red;
+            transition: all 0.5s ease;
+        }
+
+        li img:nth-child(1) {
+            display: block;
+        }
+
+        li img:nth-child(2) {
+            display: none;
+        }
+
+        .slick-slide {
+            border: none;
+        }
+
+        li.slick-active img:nth-child(1) {
+            display: none;
+        }
+
+        li.slick-active img:nth-child(2) {
+            display: block;
+        }
+    }
+
+    .slick-prev, .slick-next {
+        height: 20px;
+        width: 20px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+    }
+}
+
+.stackviewer-embedcode {
+    background: lightgrey;
+    padding: 5px;
+    cursor: pointer;
+
+    .tooltiptext {
+        visibility: hidden;
+        width: 140px;
+        background-color: #555;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        position: absolute;
+        z-index: 1;
+        left: 100px;
+        margin: -32px 0 0 0;
+        opacity: 0;
+        transition: opacity 0.3s;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+    }
+
+    &:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+    }
+}

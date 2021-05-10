@@ -63,8 +63,18 @@ class stack {
     /**
      * @return string
      */
-    public function get_name() : string{
+    public function get_name() : string {
         return $this->record->name;
+    }
+
+    /**
+     * @return string
+     * @throws \coding_exception
+     */
+    public function get_filter_code() : string {
+        return get_string('text:embedcode', 'mod_stackview', (object)[
+            'code' => '[stackview id=' . $this->record->id . ']',
+        ]);
     }
 
 }

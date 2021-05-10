@@ -52,4 +52,22 @@ class mod_stackview_renderer extends plugin_renderer_base {
         return $this->render_from_template('mod_stackview/stackview', $context);
     }
 
+    /**
+     * Get embed code
+     *
+     * @param \mod_stackview\stack $stack
+     *
+     * @return string
+     * @throws \coding_exception
+     */
+    public function show_filter_code(\mod_stackview\stack $stack) : string {
+        global $PAGE;
+
+        if (has_capability('mod/stackview:management', $PAGE->cm->context)) {
+            return html_writer::div($stack->get_filter_code() , 'stackviewer-embedcode');
+        }
+
+        return '';
+    }
+
 }
