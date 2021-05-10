@@ -75,13 +75,19 @@ define(['jquery', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.j
                 },
             });
 
-            slider.on('wheel', (function(e) {
+            slider.on('wheel click', (function(e) {
                 e.preventDefault();
+                let $el = $(this);
+
+                if(e.type === 'click'){
+                    $el.slick('slickNext');
+                    return;
+                }
 
                 if (e.originalEvent.deltaY > 0) {
-                    $(this).slick('slickNext');
+                    $el.slick('slickNext');
                 } else {
-                    $(this).slick('slickPrev');
+                    $el.slick('slickPrev');
                 }
 
             })).on("beforeChange", function() {
@@ -99,7 +105,7 @@ define(['jquery', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.j
     return {
         init: function() {
             // eslint-disable-next-line
-            console.log('Load Stackviewer v3.9.1 (based on slick.js)');
+            console.log('Load Stackviewer v3.9.2 (based on slick.js)');
             loadSlick();
         }
     };
