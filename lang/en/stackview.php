@@ -53,7 +53,3 @@ $string['text:no_image'] = 'There are no images added.';
 
 // Form.
 $string['form:file'] = 'Select file';
-
-// Javascript.
-$string['js:confirm_delete_title'] = 'Delete item';
-$string['js:confirm_delete_message'] = 'Are you sure you want to delete this item?';
