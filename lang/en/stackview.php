@@ -38,13 +38,13 @@ $string['form:stackviewname'] = 'Name';
 // Heading.
 $string['thead:icon'] = 'Image';
 $string['thead:name'] = 'Name';
-$string['thead:action'] = 'Action';
 
 // Buttons.
 $string['btn:management'] = 'Management Stackview';
 $string['btn:confirm'] = 'Yes';
 $string['btn:cancel'] = 'Cancel';
 $string['btn:add'] = 'Add';
+$string['btn:file_management'] = 'File management';
 
 // Text.
 $string['text:embedcode'] = 'Filter embed code: <b id="stack-code">{$a->code}</b>

@@ -21,45 +21,19 @@
 }}
 <div class="stackview-table">
     <a href="{{addurl}}" class="btn btn-primary">
-        {{# str}} btn:add, mod_stackview {{/ str}}
+        {{# str}} btn:file_management, mod_stackview {{/ str}}
     </a>
     <hr>
     <table class="table table-striped">
         <tr>
             <th>{{# str}} thead:icon, mod_stackview {{/ str}}</th>
             <th>{{# str}} thead:name, mod_stackview {{/ str}}</th>
-            <th>{{# str}} thead:action, mod_stackview {{/ str}}</th>
         </tr>
         {{#files}}
             <tr>
                 <td><img src="{{image}}" style="width:100px" /></td>
                 <td>{{filename}}</td>
-                <td>{{actions}}</td>
             </tr>
         {{/files}}
     </table>
 </div>
-<script>
-        {{#js}}
-        require(['core/notification'], function(Notification) {
-
-            const deleteButtons = document.querySelectorAll('.btn-danger');
-            for (const button of deleteButtons) {
-                button.addEventListener('click', function(event) {
-                    event.preventDefault();
-
-                    let href = this.getAttribute('href');
-                    Notification.confirm(
-                            '{{# str}} js:confirm_delete_title, mod_stackview {{/ str}}',
-                            '{{# str}} js:confirm_delete_message, mod_stackview {{/ str}}',
-                            '{{# str}} btn:confirm, mod_stackview {{/ str}}',
-                            '{{# str}} btn:cancel, mod_stackview {{/ str}}',
-                            function() {
-                                window.location = href;
-                            });
-                })
-            }
-
-        });
-        {{/js}}
-</script>
