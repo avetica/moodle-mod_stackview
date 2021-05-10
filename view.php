@@ -49,9 +49,11 @@ if ($id) {
     print_error(get_string('missingidandcmid', mod_stackview));
 }
 
-require_login($course, true, $cm);
-
 $modulecontext = context_module::instance($cm->id);
+
+require_login($course, true, $cm);
+require_capability('mod/stackview:view' , $modulecontext);
+
 
 $event = \mod_stackview\event\course_module_viewed::create([
     'objectid' => $stackview->id,

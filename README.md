@@ -1,12 +1,20 @@
 # MFreak - mod_stackview
 
-@TODO
+With the Stackview module you can create a scrollable images activity. 
+
+![Stackview](pix/stackview.png)
 
 ##### Features:
 
 - GDPR null_provider
-- Scrollable images based on https://kenwheeler.github.io/slick/
-- @TODO
+- Scrollable images based on https://kenwheeler.github.io/slick/ tweaked to allow scrolling.
+- Images upload by separate capability.
+- Order is based on image names.
+- There is an additional filter that can be used for embedding.
+- Embedding sample.
+```text
+<iframe src="/mod/stackview/view.php?id=68&action=embedded" width="600" height="600" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>```
+```
 
 ##### Tested in:
 

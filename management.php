@@ -24,4 +24,47 @@
  * @author    Luuk Verhoeven
  **/
 
-// @TODO
+require(__DIR__ . '/../../config.php');
+require_once(__DIR__ . '/lib.php');
+defined('MOODLE_INTERNAL') || die;
+
+// Course_module ID.
+$id = required_param('cmid', PARAM_INT);
+$action = optional_param('action', '', PARAM_ALPHA);
+
+$cm = get_coursemodule_from_id('stackview', $id, 0, false, MUST_EXIST);
+$course = $DB->get_record('course', ['id' => $cm->course], '*', MUST_EXIST);
+$stackview = $DB->get_record('stackview', ['id' => $cm->instance], '*', MUST_EXIST);
+
+require_login($course, true, $cm);
+
+$modulecontext = context_module::instance($cm->id);
+require_capability('mod/stackview:management', $modulecontext);
+
+// Load stack instance.
+$stack = new \mod_stackview\stack(0, $stackview);
+$PAGE->set_url('/mod/stackview/view.php', [
+    'id' => $cm->id,
+    'action' => $action,
+]);
+
+$PAGE->set_title(format_string($stackview->name));
+$PAGE->set_heading(format_string($course->fullname));
+$PAGE->set_context($modulecontext);
+
+$renderer = $PAGE->get_renderer('mod_stackview');
+
+$PAGE->requires->js_call_amd('mod_stackview/stackview', 'init', [[]]);
+
+switch ($action) {
+
+    case 'edit':
+
+        break;
+
+    default:
+
+        echo $OUTPUT->header();
+        echo $renderer->get_table_stack_images($stack);
+        echo $OUTPUT->footer();
+}

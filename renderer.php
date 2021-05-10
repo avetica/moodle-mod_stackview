@@ -70,4 +70,20 @@ class mod_stackview_renderer extends plugin_renderer_base {
         return '';
     }
 
+    /**
+     * Get stack images table
+     *
+     * @param \mod_stackview\stack $stack
+     *
+     * @return string
+     * @throws \moodle_exception
+     */
+    public function get_table_stack_images(\mod_stackview\stack $stack) : string{
+        $context = (new \mod_stackview\output\stackview_images_output($stack))
+            ->export_for_template($this);
+
+        return $this->render_from_template('mod_stackview/stackview', $context);
+    }
+
+
 }

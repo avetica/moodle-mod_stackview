@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Stack model
+ * Output a stackview_images_output
  *
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
@@ -24,11 +24,16 @@
  * @author    Luuk Verhoeven
  **/
 
-namespace mod_stackview;
+namespace mod_stackview\output;
 defined('MOODLE_INTERNAL') || die;
 
+use mod_stackview\stack;
+use renderable;
+use renderer_base;
+use templatable;
+
 /**
- * Class stack
+ * Class stackview_images_output
  *
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
@@ -36,45 +41,26 @@ defined('MOODLE_INTERNAL') || die;
  * @copyright 09/05/2021 Mfreak.nl | LdesignMedia.nl - Luuk Verhoeven
  * @author    Luuk Verhoeven
  */
-class stack {
-
-    protected $record = null;
+class stackview_images_output implements renderable, templatable {
 
     /**
-     * stack constructor.
+     * @var \mod_stackview\stack
+     */
+    private $stack;
+
+    public function __construct(stack $stack) {
+        $this->stack = $stack;
+    }
+
+    /**
+     * @param \renderer_base $output
      *
-     * @param int         $id
-     * @param object|null $recordraw
-     *
-     * @throws \dml_exception
+     * @return object
      */
-    public function __construct(int $id, ?object $recordraw) {
-        global $DB;
+    public function export_for_template(renderer_base $output) : object {
 
-        if ($id > 0) {
-            $this->record = $DB->get_record('stackview', ['id' => $id], '*', MUST_EXIST);
-
-            return;
-        }
-
-        $this->record = $recordraw;
+        return (object)[
+            'name' => $this->stack->get_name()
+        ];
     }
-
-    /**
-     * @return string
-     */
-    public function get_name() : string {
-        return $this->record->name;
-    }
-
-    /**
-     * @return string
-     * @throws \coding_exception
-     */
-    public function get_filter_code() : string {
-        return get_string('text:embedcode', 'mod_stackview', (object)[
-            'code' => '[[stackview ' . $this->record->id . ']]',
-        ]);
-    }
-
 }
