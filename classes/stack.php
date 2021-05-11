@@ -136,6 +136,8 @@ class stack {
     }
 
     /**
+     * get_course
+     *
      * @return int
      */
     private function get_course() : int {

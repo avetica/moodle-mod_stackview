@@ -70,7 +70,7 @@ define(['jquery', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.j
                 speed: 1,
                 arrows: false,
                 swipeToSlide: false,
-                customPaging: function(slider, i) {
+                customPaging: function(s, i) {
                     return (++i);
                 },
             });

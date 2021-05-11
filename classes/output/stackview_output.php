@@ -48,14 +48,22 @@ class stackview_output implements renderable, templatable {
      */
     private $stack;
 
+    /**
+     * stackview_output constructor.
+     *
+     * @param \mod_stackview\stack $stack
+     */
     public function __construct(stack $stack) {
         $this->stack = $stack;
     }
 
     /**
+     * Export template vars
+     *
      * @param \renderer_base $output
      *
      * @return object
+     * @throws \coding_exception
      */
     public function export_for_template(renderer_base $output) : object {
 

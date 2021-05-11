@@ -182,7 +182,7 @@ function stackview_extend_settings_navigation(settings_navigation $settings, nav
     $keys = $stacknode->get_children_key_list();
     $beforekey = null;
     $i = array_search('modedit', $keys, true);
-    if ($i === false and array_key_exists(0, $keys)) {
+    if ($i === false && array_key_exists(0, $keys)) {
         $beforekey = $keys[0];
     } else if (array_key_exists($i + 1, $keys)) {
         $beforekey = $keys[$i + 1];

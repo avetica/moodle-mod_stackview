@@ -49,6 +49,11 @@ class stackview_images_output implements renderable, templatable {
      */
     private $stack;
 
+    /**
+     * stackview_images_output constructor.
+     *
+     * @param \mod_stackview\stack $stack
+     */
     public function __construct(stack $stack) {
         $this->stack = $stack;
     }
