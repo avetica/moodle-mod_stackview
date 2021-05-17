@@ -56,7 +56,7 @@ final class helper {
             'noclean' => 0,
             'trusttext' => 0,
             'autosave' => false,
-            'accepted_types' => ['.png', '.jpg', '.gif', '.webp', '.tiff', '.svg'],
+            'accepted_types' => ['.png', '.jpg', '.gif', '.webp', '.tiff', '.svg', '.jpeg'],
         ];
     }
 }

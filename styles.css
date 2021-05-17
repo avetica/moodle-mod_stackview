@@ -1,37 +1,37 @@
 @import 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css';
-.stackviewer {
+#page-mod-stackview-view .stackviewer {
   background: #000;
   color: #fff;
   border-radius: 3px;
   max-width: 1200px;
   margin: 0 auto;
 }
-.stackviewer h2 {
+#page-mod-stackview-view .stackviewer h2 {
   padding: 10px 10%;
   text-align: center;
 }
-.stackviewer .slick-slider {
+#page-mod-stackview-view .stackviewer .slick-slider {
   border: 10px solid lightgrey;
   width: 80%;
   padding: 0;
   position: relative;
   top: 5%;
 }
-.stackviewer #slider {
+#page-mod-stackview-view .stackviewer #slider {
   background-color: #000;
   padding: 20px 10%;
   cursor: ns-resize;
 }
-.stackviewer #slider img {
+#page-mod-stackview-view .stackviewer #slider img {
   width: 100%;
   margin: 0;
   padding: 0;
 }
-.stackviewer .slide {
+#page-mod-stackview-view .stackviewer .slide {
   position: relative;
   border: none;
 }
-.stackviewer .slick-dots {
+#page-mod-stackview-view .stackviewer .slick-dots {
   position: absolute;
   right: -45px;
   top: 50%;
@@ -45,48 +45,59 @@
   flex-direction: column;
   justify-content: space-around;
 }
-.stackviewer .slick-dots li {
+#page-mod-stackview-view .stackviewer .slick-dots li {
   background: #999999;
   color: #fff;
   cursor: pointer;
   border-radius: 3px;
   width: 20px;
 }
-.stackviewer .slick-dots li.slick-active {
+#page-mod-stackview-view .stackviewer .slick-dots li.slick-active {
   background: red;
   transition: all 0.5s ease;
 }
-.stackviewer .slick-dots li img:nth-child(1) {
+#page-mod-stackview-view .stackviewer .slick-dots li img:nth-child(1) {
   display: block;
 }
-.stackviewer .slick-dots li img:nth-child(2) {
+#page-mod-stackview-view .stackviewer .slick-dots li img:nth-child(2) {
   display: none;
 }
-.stackviewer .slick-dots .slick-slide {
+#page-mod-stackview-view .stackviewer .slick-dots .slick-slide {
   border: none;
 }
-.stackviewer .slick-dots li.slick-active img:nth-child(1) {
+#page-mod-stackview-view .stackviewer .slick-dots li.slick-active img:nth-child(1) {
   display: none;
 }
-.stackviewer .slick-dots li.slick-active img:nth-child(2) {
+#page-mod-stackview-view .stackviewer .slick-dots li.slick-active img:nth-child(2) {
   display: block;
 }
-.stackviewer .slick-prev, .stackviewer .slick-next {
+#page-mod-stackview-view .stackviewer .slick-prev, #page-mod-stackview-view .stackviewer .slick-next {
   height: 20px;
   width: 20px;
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
 }
-
-.stackviewer-embedcode {
+#page-mod-stackview-view.pagelayout-popup {
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+}
+#page-mod-stackview-view.pagelayout-popup #page, #page-mod-stackview-view.pagelayout-popup #region-main-box {
+  margin: 0;
+  padding: 0;
+}
+#page-mod-stackview-view.pagelayout-popup #region-main {
+  min-height: 0;
+}
+#page-mod-stackview-view .stackviewer-embedcode {
   max-width: 1200px;
   margin: 0 auto;
   background: lightgrey;
   padding: 5px;
   cursor: pointer;
 }
-.stackviewer-embedcode .tooltiptext {
+#page-mod-stackview-view .stackviewer-embedcode .tooltiptext {
   visibility: hidden;
   width: 140px;
   background-color: #555;
@@ -94,16 +105,14 @@
   text-align: center;
   border-radius: 6px;
   padding: 5px;
-  position: absolute;
   z-index: 1;
   left: 100px;
   margin: -32px 0 0 0;
   opacity: 0;
   transition: opacity 0.3s;
 }
-.stackviewer-embedcode .tooltiptext::after {
+#page-mod-stackview-view .stackviewer-embedcode .tooltiptext::after {
   content: "";
-  position: absolute;
   top: 100%;
   left: 50%;
   margin-left: -5px;
@@ -111,7 +120,7 @@
   border-style: solid;
   border-color: #555 transparent transparent transparent;
 }
-.stackviewer-embedcode:hover .tooltiptext {
+#page-mod-stackview-view .stackviewer-embedcode:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
 }
