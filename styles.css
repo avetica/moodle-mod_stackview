@@ -89,6 +89,8 @@
 }
 #page-mod-stackview-view.pagelayout-popup #region-main {
   min-height: 0;
+  background-color: #fff;
+  padding: 0;
 }
 #page-mod-stackview-view .stackviewer-embedcode {
   max-width: 1200px;

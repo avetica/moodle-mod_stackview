@@ -20,6 +20,7 @@ With the Stackview module you can create a scrollable images activity.
 ##### Tested in:
 
 ![moodle394](https://img.shields.io/badge/moodle-3.94-blue.svg)
+![workplace39](https://img.shields.io/badge/workplace-3.9-blue.svg)
 
 ### Installation
 
@@ -31,9 +32,9 @@ With the Stackview module you can create a scrollable images activity.
 
 ##### Requirements:
 
-* Recommended Moodle version: **3.9 Moodle**
+* Recommended Moodle version: **3.9 Workplace**
 * Recommended PHP version: **7.2**
-* Required Moodle version: **3.9 Moodle**
+* Required Moodle version: **3.9 Moodle / 3.9 Workplac**
 * Required PHP version: **7.2**
 ---
 ### Changelog
