@@ -82,6 +82,7 @@ $PAGE->requires->js_call_amd('mod_stackview/stackview', 'init', [
 switch ($action) {
     case 'embedded':
 
+        $PAGE->requires->js('/mod/stackview/javascript/iframe.content.js' , true);
         $PAGE->set_pagelayout('popup');
 
         echo $OUTPUT->header();

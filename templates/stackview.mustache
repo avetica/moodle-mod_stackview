@@ -19,20 +19,22 @@
     @copyright 09/05/2021 Mfreak.nl | LdesignMedia.nl - Luuk Verhoeven
     @author    Luuk Verhoeven
 }}
-<div class="stackviewer {{#is_embedded}}embedded{{/is_embedded}}">
-    <h2>{{name}}</h2>
-    <section id="slider" class="container-fluid">
-        <div class="container slick-slider">
-            {{#files}}
-                <div class="slide">
-                    <img src="{{image}}">
-                </div>
-            {{/files}}
-            {{^files}}
-                <div class="slide">
-                    <h2>{{# str}} text:no_image, mod_stackview {{/ str}}</h2>
-                </div>
-            {{/files}}
-        </div>
-    </section>
+<div data-iframe-height="iFrameResizer">
+    <div class="stackviewer {{#is_embedded}}embedded{{/is_embedded}}">
+        <h2>{{name}}</h2>
+        <section id="slider" class="container-fluid">
+            <div class="container slick-slider">
+                {{#files}}
+                    <div class="slide">
+                        <img src="{{image}}">
+                    </div>
+                {{/files}}
+                {{^files}}
+                    <div class="slide">
+                        <h2>{{# str}} text:no_image, mod_stackview {{/ str}}</h2>
+                    </div>
+                {{/files}}
+            </div>
+        </section>
+    </div>
 </div>
