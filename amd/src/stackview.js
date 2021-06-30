@@ -22,15 +22,13 @@
  * @copyright 09/05/2021 Mfreak.nl | LdesignMedia.nl - Luuk Verhoeven
  * @author    Luuk Verhoeven
  **/
-
+/*eslint-disable no-console*/
 define(['jquery', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js'], function($) {
 
     'use strict';
 
-    /**
-     *
-     * @param {string} containerid
-     */
+    let $slick = $('#slick-slider');
+
     let copyToClipboard = function(containerid) {
 
         if (window.getSelection) {
@@ -59,27 +57,34 @@ define(['jquery', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.j
     };
 
     let loadSlick = function() {
+
         $(document).ready(function() {
 
-            let slider = $('.slick-slider').slick({
+            $slick.on('init reInit afterChange', function(event, slick, currentSlide) {
+                let i = (currentSlide ? currentSlide : 0) + 1;
+                let calc = ((i) / (slick.slideCount)) * 100;
+
+                $('#slick-counter').text(i + '/' + slick.slideCount);
+                $('#slick-progressbar').css('background-size', '100% ' + calc + '%')
+                    .attr('aria-valuenow', calc);
+            });
+
+            let slider = $slick.slick({
                 vertical: true,
                 slidesToShow: 1,
                 slidesToScroll: 1,
                 autoplay: false,
-                dots: true,
+                dots: false,
                 speed: 1,
                 arrows: false,
                 swipeToSlide: false,
-                customPaging: function(s, i) {
-                    return (++i);
-                },
             });
 
             slider.on('wheel click', (function(e) {
                 e.preventDefault();
                 let $el = $(this);
 
-                if(e.type === 'click'){
+                if (e.type === 'click') {
                     $el.slick('slickNext');
                     return;
                 }
@@ -89,11 +94,13 @@ define(['jquery', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.j
                 } else {
                     $el.slick('slickPrev');
                 }
+            }));
 
-            })).on("beforeChange", function() {
-                $(".slick-list").addClass("do-tans");
-            }).on("afterChange", function() {
-                $(".slick-list").removeClass("do-tans");
+            $('.slick-list').before('<span id="slick-counter">1/' + $slick.slick("getSlick").slideCount + '</span>' +
+                '                           <div id="slick-progressbar"></div>');
+
+            $(window).on('resize orientationchange', function() {
+                $slick.slick('resize');
             });
 
             $('.stackviewer-embedcode').on('click', function() {

@@ -10,7 +10,7 @@
   padding: 10px 10%;
   text-align: center;
 }
-#page-mod-stackview-view .stackviewer .slick-slider {
+#page-mod-stackview-view .stackviewer #slick-slider {
   border: 10px solid lightgrey;
   width: 80%;
   padding: 0;
@@ -31,44 +31,67 @@
   position: relative;
   border: none;
 }
-#page-mod-stackview-view .stackviewer .slick-dots {
+#page-mod-stackview-view .stackviewer #slick-progressbar {
   position: absolute;
-  right: -45px;
+  height: 100%;
+  right: -22px;
+  width: 8px;
+  background-color: #f5f5f5;
+  background-image: linear-gradient(to bottom, #999999, #999999);
+  background-repeat: no-repeat;
+  background-size: 100% 0;
+  border-radius: 3px;
+  margin-top: 5px;
+  z-index: 999;
+}
+#page-mod-stackview-view .stackviewer #slick-counter {
+  padding: 4px;
+  background: red;
+  position: absolute;
+  right: -55px;
+  top: -30px;
+  border-radius: 4px;
+}
+#page-mod-stackview-view .stackviewer ul.slick-dots {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  right: -20px;
   top: 50%;
   transform: translateY(-50%);
   list-style: none;
   text-align: center;
-  margin: 0 3px;
-  padding: 11% 1% 11% 1.5%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-}
-#page-mod-stackview-view .stackviewer .slick-dots li {
+  justify-content: center;
+  align-items: center;
   background: #999999;
+  border-radius: 2px;
+}
+#page-mod-stackview-view .stackviewer ul.slick-dots li {
   color: #fff;
   cursor: pointer;
-  border-radius: 3px;
-  width: 20px;
+  width: 8px;
+  display: flex;
+  flex-grow: 1;
 }
-#page-mod-stackview-view .stackviewer .slick-dots li.slick-active {
+#page-mod-stackview-view .stackviewer ul.slick-dots li.slick-active {
   background: red;
-  transition: all 0.5s ease;
 }
-#page-mod-stackview-view .stackviewer .slick-dots li img:nth-child(1) {
+#page-mod-stackview-view .stackviewer ul.slick-dots li img:nth-child(1) {
   display: block;
 }
-#page-mod-stackview-view .stackviewer .slick-dots li img:nth-child(2) {
+#page-mod-stackview-view .stackviewer ul.slick-dots li img:nth-child(2) {
   display: none;
 }
-#page-mod-stackview-view .stackviewer .slick-dots .slick-slide {
+#page-mod-stackview-view .stackviewer ul.slick-dots .slick-slide {
   border: none;
 }
-#page-mod-stackview-view .stackviewer .slick-dots li.slick-active img:nth-child(1) {
+#page-mod-stackview-view .stackviewer ul.slick-dots li.slick-active img:nth-child(1) {
   display: none;
 }
-#page-mod-stackview-view .stackviewer .slick-dots li.slick-active img:nth-child(2) {
+#page-mod-stackview-view .stackviewer ul.slick-dots li.slick-active img:nth-child(2) {
   display: block;
 }
 #page-mod-stackview-view .stackviewer .slick-prev, #page-mod-stackview-view .stackviewer .slick-next {
