@@ -45,10 +45,10 @@
         #slick-progressbar {
             position: absolute;
             height: 100%;
-            right: -22px;
+            right: -25px;
             width: 8px;
             background-color: #f5f5f5;
-            background-image: linear-gradient(to bottom, #999999, #999999);
+            background-image: linear-gradient(to bottom, #999, #999);
             background-repeat: no-repeat;
             background-size: 100% 0;
             border-radius: 3px;
@@ -60,9 +60,32 @@
             padding: 4px;
             background: red;
             position: absolute;
-            right: -55px;
-            top: -30px;
+            right: -43px;
+            top: -55px;
             border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .previous-slide {
+            z-index: 9999;
+            padding: 4px;
+            background: red;
+            position: absolute;
+            right: -31px;
+            top: -11px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .next-slide {
+            z-index: 999;
+            padding: 4px;
+            background: red;
+            position: absolute;
+            right: -31px;
+            bottom: -11px;
+            border-radius: 4px;
+            cursor: pointer;
         }
 
         ul.slick-dots {
@@ -79,7 +102,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: #999999;
+            background: #999;
             border-radius: 2px;
 
             li {

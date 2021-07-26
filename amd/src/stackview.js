@@ -23,13 +23,13 @@
  * @author    Luuk Verhoeven
  **/
 /*eslint-disable no-console*/
-define(['jquery', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js'], function($) {
+define(['jquery', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js'], function ($) {
 
     'use strict';
 
     let $slick = $('#slick-slider');
 
-    let copyToClipboard = function(containerid) {
+    let copyToClipboard = function (containerid) {
 
         if (window.getSelection) {
             if (window.getSelection().empty) { // Chrome
@@ -56,11 +56,25 @@ define(['jquery', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.j
         alert("Copied to clipboard");
     };
 
-    let loadSlick = function() {
+    let loadSlick = function () {
 
-        $(document).ready(function() {
+        $.fn.extend({
+            disableSelection: function () {
+                this.each(function () {
+                    this.onselectstart = function () {
+                        return false;
+                    };
+                    this.unselectable = "on";
+                    $(this).css('-moz-user-select', 'none');
+                    $(this).css('-webkit-user-select', 'none');
+                });
+                return this;
+            }
+        });
 
-            $slick.on('init reInit afterChange', function(event, slick, currentSlide) {
+        $(document).ready(function () {
+
+            $slick.on('init reInit afterChange', function (event, slick, currentSlide) {
                 let i = (currentSlide ? currentSlide : 0) + 1;
                 let calc = ((i) / (slick.slideCount)) * 100;
 
@@ -80,37 +94,67 @@ define(['jquery', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.j
                 swipeToSlide: false,
             });
 
-            slider.on('wheel click', (function(e) {
+            slider.on('wheel click', (function (e) {
                 e.preventDefault();
                 let $el = $(this);
 
-                if (e.type === 'click') {
-                    $el.slick('slickNext');
-                    return;
-                }
+                if (e.target.tagName === 'IMG' || e.target.tagName === 'DIV') {
 
-                if (e.originalEvent.deltaY > 0) {
-                    $el.slick('slickNext');
-                } else {
-                    $el.slick('slickPrev');
+                    if (e.type === 'click') {
+                        $el.slick('slickNext');
+                        return;
+                    }
+
+                    if (e.originalEvent.deltaY > 0) {
+                        $el.slick('slickNext');
+                    } else {
+                        $el.slick('slickPrev');
+                    }
                 }
             }));
 
-            $('.slick-list').before('<span id="slick-counter">1/' + $slick.slick("getSlick").slideCount + '</span>' +
-                '                           <div id="slick-progressbar"></div>');
+            $('.slick-list').before('<span class="previous-slide"><i class="fa fa-angle-up"></i></span>' +
+                '<span id="slick-counter">1/' + $slick.slick("getSlick").slideCount + '</span>' +
+                '<div id="slick-progressbar"></div>' +
+                '<span class="next-slide"><i class="fa fa-angle-down"></i></span>');
 
-            $(window).on('resize orientationchange', function() {
+            $('body').disableSelection();
+
+            let touchCounter;
+            $('.previous-slide').on('touchstart', (function () {
+                touchCounter = setInterval(function () {
+                    $slick.slick('slickPrev');
+                }, 200);
+            })).on('touchend', (function () {
+                clearInterval(touchCounter);
+                touchCounter = null;
+            })).on("mousedown", function () {
+                $slick.slick('slickPrev');
+            });
+
+            $('.next-slide').on('touchstart', (function () {
+                touchCounter = setInterval(function () {
+                    $slick.slick('slickNext');
+                }, 200);
+            })).on('touchend', (function () {
+                clearInterval(touchCounter);
+                touchCounter = null;
+            })).on("mousedown", function () {
+                $slick.slick('slickNext');
+            });
+
+            $(window).on('resize orientationchange', function () {
                 $slick.slick('resize');
             });
 
-            $('.stackviewer-embedcode').on('click', function() {
+            $('.stackviewer-embedcode').on('click', function () {
                 copyToClipboard("stack-code");
             });
         });
     };
 
     return {
-        init: function() {
+        init: function () {
             // eslint-disable-next-line
             console.log('Load Stackviewer v3.9.2 (based on slick.js)');
             loadSlick();

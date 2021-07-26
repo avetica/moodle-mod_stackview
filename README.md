@@ -39,6 +39,9 @@ With the Stackview module you can create a scrollable images activity.
 ---
 ### Changelog
 
+##### 3.9.1 (26.07.2021)
+* Add navigation buttons and allow touch events.
+
 ##### 3.9 (09.05.2021)
 * Original release 
 
