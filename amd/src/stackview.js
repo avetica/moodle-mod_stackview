@@ -143,6 +143,24 @@ define(['jquery', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.j
                 $slick.slick('slickNext');
             });
 
+            // Mouse click and hold.
+            let clickTimeout = 0;
+            $('.next-slide').on('mousedown', function () {
+                clickTimeout = setInterval(function () {
+                    $slick.slick('slickNext');
+                }, 200);
+            }).on('mouseup mouseleave', function () {
+                clearTimeout(clickTimeout);
+            });
+
+            $('.previous-slide').on('mousedown', function () {
+                clickTimeout = setInterval(function () {
+                    $slick.slick('slickPrev');
+                }, 200);
+            }).on('mouseup mouseleave', function () {
+                clearTimeout(clickTimeout);
+            });
+
             $(window).on('resize orientationchange', function () {
                 $slick.slick('resize');
             });
