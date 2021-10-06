@@ -41,7 +41,6 @@ $string['thead:name'] = 'Name';
 
 // Buttons.
 $string['btn:management'] = 'Management Stackview';
-$string['btn:confirm'] = 'Yes';
 $string['btn:cancel'] = 'Cancel';
 $string['btn:add'] = 'Add';
 $string['btn:file_management'] = 'File management';
