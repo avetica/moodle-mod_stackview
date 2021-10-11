@@ -31,27 +31,15 @@ define(['jquery', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.j
 
     let copyToClipboard = function (containerid) {
 
-        if (window.getSelection) {
-            if (window.getSelection().empty) { // Chrome
-                window.getSelection().empty();
-            } else if (window.getSelection().removeAllRanges) { // Firefox
-                window.getSelection().removeAllRanges();
-            }
-        } else if (document.selection) { // IE?
-            document.selection.empty();
-        }
-
-        if (document.selection) {
-            let range = document.body.createTextRange();
-            range.moveToElementText(document.getElementById(containerid));
-            range.select().createTextRange();
-            document.execCommand("copy");
-        } else if (window.getSelection) {
-            let range = document.createRange();
-            range.selectNode(document.getElementById(containerid));
-            window.getSelection().addRange(range);
-            document.execCommand("copy");
-        }
+        const el = document.createElement('textarea');
+        el.value = document.getElementById(containerid).innerHTML;
+        el.setAttribute('readonly', '');
+        el.style.position = 'absolute';
+        el.style.left = '-9999px';
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
 
         alert("Copied to clipboard");
     };
