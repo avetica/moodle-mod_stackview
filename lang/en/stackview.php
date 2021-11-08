@@ -27,7 +27,7 @@ defined('MOODLE_INTERNAL') || die;
 
 $string['pluginname'] = 'Stackviewer';
 $string['modulename'] = 'Stackviewer';
-$string['modulename_help'] = 'Met de stackviewer kan de cursusontwikkelaar radiologische beelden presenteren. De cursist kan door de beelden scrollen, vergelijkbaar met het gebruik van radiologische software. De beelden worden genummerd zodat over het gepresenteerde beeld een dialoog kan plaatvinden. De stackviewer kan op elke gewenste plek in een cursus geïntegreerd worden. Geaccepteerde bestandstypes: JPEG, PNG, SVG, TIFF, GIF.';
+$string['modulename_help'] = 'Met de stackviewer kan de cursusontwikkelaar radiologische beelden presenteren. De cursist kan door de beelden scrollen, vergelijkbaar met het gebruik van radiologische software. De beelden worden genummerd zodat over het gepresenteerde beeld een dialoog kan plaatvinden. De stackviewer kan op elke gewenste plek in een cursus geïntegreerd worden. Geaccepteerde bestandstypes: JPEG, PNG, SVG, GIF.';
 $string['modulenameplural'] = 'Stackviewer';
 $string['pluginadministration'] = 'Stackviewer administration';
 $string['privacy:metadata'] = 'The mod_stackview plugin does not store any personal data.';
