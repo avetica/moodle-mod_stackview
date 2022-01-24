@@ -29,8 +29,6 @@ namespace mod_stackview;
 use context_module;
 use moodle_url;
 
-defined('MOODLE_INTERNAL') || die;
-
 /**
  * Class stack
  *
@@ -42,7 +40,10 @@ defined('MOODLE_INTERNAL') || die;
  */
 class stack {
 
-    protected $record = null;
+    /**
+     * @var false|object|null
+     */
+    protected $record;
 
     /**
      * stack constructor.

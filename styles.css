@@ -90,7 +90,7 @@
     position: absolute;
     right: -20px;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translatey(-50%);
     list-style: none;
     text-align: center;
     height: 100%;
@@ -197,4 +197,4 @@
     opacity: 1;
 }
 
-/*# sourceMappingURL=styles.css.map */
+/*# sourcemappingurl=styles.css.map */

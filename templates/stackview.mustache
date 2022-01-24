@@ -15,19 +15,35 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @package mod_stackview
-    @copyright 09/05/2021 Mfreak.nl | LdesignMedia.nl - Luuk Verhoeven
-    @author    Luuk Verhoeven
+    @package    mod_stackview
+    @copyright  09/05/2021 Mfreak.nl | LdesignMedia.nl - Luuk Verhoeven
+    @author     Luuk Verhoeven
+}}
+{{!
+    @template mod_stackview/stackview
+
+    Example context (json):
+    {
+        "is_embedded" : false,
+        "name" : "The stackview",
+        "files" : [
+         {
+            "image" : "/test/image1.jpg"
+         },
+         {
+            "image" : "/test/image2.jpg"
+         }
+        ]
+    }
 }}
 <div data-iframe-height="iFrameResizer">
     <div class="stackviewer {{#is_embedded}}embedded{{/is_embedded}}">
         <h2>{{name}}</h2>
-
-        <section id="slider" class="container-fluid">
+        <div id="slider" class="container-fluid">
             <div id="slick-slider" class="container">
                 {{#files}}
                     <div class="slide">
-                        <img src="{{image}}">
+                        <img src="{{image}}" alt="">
                     </div>
                 {{/files}}
                 {{^files}}
@@ -36,6 +52,6 @@
                     </div>
                 {{/files}}
             </div>
-        </section>
+        </div>
     </div>
 </div>

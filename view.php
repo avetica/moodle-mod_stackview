@@ -43,7 +43,7 @@ if ($id) {
     $course = $DB->get_record('course', ['id' => $stackview->course], '*', MUST_EXIST);
     $cm = get_coursemodule_from_instance('stackview', $stackview->id, $course->id, false, MUST_EXIST);
 } else {
-    print_error(get_string('missingidandcmid', mod_stackview));
+    throw new moodle_exception('missingidandcmid' , 'stackview');
 }
 
 $modulecontext = context_module::instance($cm->id);

@@ -28,8 +28,6 @@
  * @author    Luuk Verhoeven
  */
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Define the complete structure for backup, with file and id annotations.
  *

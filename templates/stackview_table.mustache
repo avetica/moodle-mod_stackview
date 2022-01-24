@@ -19,6 +19,24 @@
     @copyright 10/05/2021 Mfreak.nl | LdesignMedia.nl - Luuk Verhoeven
     @author    Luuk Verhoeven
 }}
+{{!
+    @template mod_stackview/stackview_table
+
+    Example context (json):
+    {
+        "addurl" : "/add.php",
+        "files" : [
+           {
+                "image" : "/test/image1.jpg",
+                "filename" : "Image 1"
+           },
+           {
+                "image" : "/test/image2.jpg" ,
+                "filename" : "Image 2"
+           }
+        ]
+    }
+}}
 <div class="stackview-table">
     <a href="{{addurl}}" class="btn btn-primary">
         {{# str}} btn:file_management, mod_stackview {{/ str}}
@@ -31,7 +49,7 @@
         </tr>
         {{#files}}
             <tr>
-                <td><img src="{{image}}" style="width:100px" /></td>
+                <td><img src="{{image}}" style="width:100px" alt=""/></td>
                 <td>{{filename}}</td>
             </tr>
         {{/files}}

@@ -25,7 +25,6 @@
  */
 
 namespace mod_stackview\event;
-defined('MOODLE_INTERNAL') || die();
 
 /**
  * Class course_module_viewed

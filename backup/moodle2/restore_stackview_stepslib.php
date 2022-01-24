@@ -24,8 +24,6 @@
  * @author    Luuk Verhoeven
  */
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Defines the structure step to restore one mod_stackview activity.
  *

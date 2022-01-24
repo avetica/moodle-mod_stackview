@@ -24,8 +24,6 @@
  * @author    Luuk Verhoeven
  **/
 
-defined('MOODLE_INTERNAL') || die;
-
 /**
  * Class mod_stackview_renderer
  *
@@ -61,9 +59,8 @@ class mod_stackview_renderer extends plugin_renderer_base {
      * @throws \coding_exception
      */
     public function show_filter_code(\mod_stackview\stack $stack): string {
-        global $PAGE;
 
-        if (has_capability('mod/stackview:management', $PAGE->cm->context)) {
+        if (has_capability('mod/stackview:management', $this->page->cm->context)) {
             return html_writer::div($stack->get_filter_code(), 'stackviewer-embedcode');
         }
 

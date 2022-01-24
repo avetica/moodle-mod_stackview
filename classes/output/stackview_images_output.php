@@ -25,7 +25,6 @@
  **/
 
 namespace mod_stackview\output;
-defined('MOODLE_INTERNAL') || die;
 
 use mod_stackview\stack;
 use moodle_url;
@@ -59,6 +58,8 @@ class stackview_images_output implements renderable, templatable {
     }
 
     /**
+     * Export template vars
+     *
      * @param renderer_base $output
      *
      * @return object

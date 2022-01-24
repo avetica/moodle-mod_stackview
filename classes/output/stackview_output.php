@@ -25,7 +25,6 @@
  **/
 
 namespace mod_stackview\output;
-defined('MOODLE_INTERNAL') || die;
 
 use mod_stackview\stack;
 use renderable;

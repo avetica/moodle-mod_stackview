@@ -32,6 +32,7 @@ $string['modulename_help'] =
 $string['modulenameplural'] = 'Stackviewer';
 $string['pluginadministration'] = 'Stackviewer administration';
 $string['privacy:metadata'] = 'The mod_stackview plugin does not store any personal data.';
+$string['stackview:addinstance'] = 'Add a new stackviewer';
 
 // Form.
 $string['form:stackviewname'] = 'Name';

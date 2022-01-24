@@ -24,8 +24,6 @@
  * @author    Luuk Verhoeven
  **/
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Return if the plugin supports $feature.
  *
@@ -108,17 +106,13 @@ function stackview_delete_instance($id) {
 
 /**
  * Returns the lists of all browsable file areas within the given module context.
- *
  * The file area 'intro' for the activity introduction field is added automatically
  *
- * @param stdClass $course  .
- * @param stdClass $cm      .
- * @param stdClass $context .
+ * @param object $course
+ * @param object $cm
+ * @param object $context
  *
- * @return string[].
- * @package     mod_stackview
- * @category    files
- *
+ * @return string[]
  */
 function stackview_get_file_areas($course, $cm, $context) {
     return [
@@ -129,18 +123,16 @@ function stackview_get_file_areas($course, $cm, $context) {
 /**
  * Serves the files from the mod_stackview file areas.
  *
- * @param stdClass $course    The course object.
- * @param stdClass $cm        The course module object.
- * @param stdClass $context   The mod_stackview's context.
- * @param string $filearea    The name of the file area.
- * @param array $args         Extra arguments (itemid, path).
+ * @param object $course The course object.
+ * @param object $cm     The course module object.
+ * @param object $context       The mod_stackview's context.
+ * @param string $filearea      The name of the file area.
+ * @param array $args          Extra arguments (itemid, path).
  * @param bool $forcedownload Whether or not force download.
- * @param array $options      Additional options affecting the file serving.
+ * @param array $options Additional options affecting the file serving.
  *
- * @return bool
- * @throws \coding_exception
- * @package     mod_stackview
- * @category    files
+ * @return false|void
+ * @throws coding_exception
  */
 function stackview_pluginfile(object $course, object $cm, $context, $filearea, $args, $forcedownload,
     array $options = []) {
