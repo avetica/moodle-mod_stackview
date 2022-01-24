@@ -95,7 +95,7 @@ class addfile extends \moodleform {
      *
      * definition_after_data
      */
-    public function definition_after_data() : void {
+    public function definition_after_data(): void {
 
         $draftitemid = file_get_submitted_draft_itemid('slide');
         file_prepare_draft_area(
@@ -112,4 +112,5 @@ class addfile extends \moodleform {
             'slide' => $draftitemid,
         ]);
     }
+
 }

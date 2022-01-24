@@ -47,7 +47,7 @@ class stack {
     /**
      * stack constructor.
      *
-     * @param int         $id
+     * @param int $id
      * @param object|null $recordraw
      *
      * @throws \dml_exception
@@ -69,7 +69,7 @@ class stack {
      *
      * @return string
      */
-    public function get_name() : string {
+    public function get_name(): string {
         return $this->record->name;
     }
 
@@ -79,8 +79,8 @@ class stack {
      * @return string
      * @throws \coding_exception
      */
-    public function get_filter_code() : string {
-        return get_string('text:embedcode', 'mod_stackview', (object)[
+    public function get_filter_code(): string {
+        return get_string('text:embedcode', 'mod_stackview', (object) [
             'code' => '[[stackview ' . $this->get_id() . ']]',
         ]);
     }
@@ -90,7 +90,7 @@ class stack {
      *
      * @return int
      */
-    public function get_id() : int {
+    public function get_id(): int {
         return $this->record->id;
     }
 
@@ -100,7 +100,7 @@ class stack {
      * @return array
      * @throws \coding_exception
      */
-    public function get_images() : array {
+    public function get_images(): array {
 
         $cm = get_coursemodule_from_instance('stackview', $this->get_id(), $this->get_course(),
             false, MUST_EXIST);
@@ -140,7 +140,7 @@ class stack {
      *
      * @return int
      */
-    private function get_course() : int {
+    private function get_course(): int {
         return $this->record->course;
     }
 

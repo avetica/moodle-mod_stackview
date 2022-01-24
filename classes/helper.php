@@ -45,12 +45,12 @@ final class helper {
      *
      * @return array
      */
-    public static function get_file_options(\context $context) : array {
+    public static function get_file_options(\context $context): array {
         global $CFG;
 
         return [
-            'subdirs'  => 0,
-            'context'  => $context,
+            'subdirs' => 0,
+            'context' => $context,
             'maxfiles' => EDITOR_UNLIMITED_FILES,
             'maxbytes' => $CFG->maxbytes,
             'noclean' => 0,
@@ -59,4 +59,5 @@ final class helper {
             'accepted_types' => ['.png', '.jpg', '.gif', '.svg', '.jpeg'],
         ];
     }
+
 }

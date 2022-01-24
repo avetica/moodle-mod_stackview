@@ -52,7 +52,7 @@ class restore_stackview_activity_task extends restore_activity_task {
      * @return void .
      * @throws base_task_exception
      */
-    protected function define_my_steps() : void {
+    protected function define_my_steps(): void {
         $this->add_step(new restore_stackview_activity_structure_step('stackview_structure', 'stackview.xml'));
     }
 
@@ -61,7 +61,7 @@ class restore_stackview_activity_task extends restore_activity_task {
      *
      * @return array.
      */
-    public static function define_decode_contents() : array {
+    public static function define_decode_contents(): array {
         $contents = [];
         $contents[] = new restore_decode_content('stackview', ['intro']);
 
@@ -73,7 +73,7 @@ class restore_stackview_activity_task extends restore_activity_task {
      *
      * @return array.
      */
-    public static function define_decode_rules() : array {
+    public static function define_decode_rules(): array {
         return [];
     }
 
@@ -83,7 +83,8 @@ class restore_stackview_activity_task extends restore_activity_task {
      *
      * @return array.
      */
-    public static function define_restore_log_rules() : array {
+    public static function define_restore_log_rules(): array {
         return [];
     }
+
 }

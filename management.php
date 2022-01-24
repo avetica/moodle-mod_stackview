@@ -66,10 +66,6 @@ $baseurl->param('id', '');
 
 switch ($action) {
 
-    case 'delete':
-
-        break;
-
     case 'add':
 
         $form = new \mod_stackview\form\addfile($PAGE->url, [

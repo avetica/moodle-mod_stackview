@@ -44,14 +44,14 @@ use templatable;
 class stackview_output implements renderable, templatable {
 
     /**
-     * @var \mod_stackview\stack
+     * @var stack
      */
     private $stack;
 
     /**
      * stackview_output constructor.
      *
-     * @param \mod_stackview\stack $stack
+     * @param stack $stack
      */
     public function __construct(stack $stack) {
         $this->stack = $stack;
@@ -60,16 +60,17 @@ class stackview_output implements renderable, templatable {
     /**
      * Export template vars
      *
-     * @param \renderer_base $output
+     * @param renderer_base $output
      *
      * @return object
      * @throws \coding_exception
      */
-    public function export_for_template(renderer_base $output) : object {
+    public function export_for_template(renderer_base $output): object {
 
-        return (object)[
+        return (object) [
             'name' => $this->stack->get_name(),
             'files' => $this->stack->get_images(),
         ];
     }
+
 }

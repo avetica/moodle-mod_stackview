@@ -51,8 +51,8 @@ function stackview_supports($feature) {
  * in mod_form.php) this function will create a new instance and return the id
  * number of the instance.
  *
- * @param object                 $moduleinstance An object from the form.
- * @param mod_stackview_mod_form $mform          The form.
+ * @param object $moduleinstance        An object from the form.
+ * @param mod_stackview_mod_form $mform The form.
  *
  * @return int The id of the newly inserted record.
  */
@@ -69,8 +69,8 @@ function stackview_add_instance(object $moduleinstance, mod_stackview_mod_form $
  * Given an object containing all the necessary data (defined in mod_form.php),
  * this function will update an existing instance with new data.
  *
- * @param object             $moduleinstance An object from the form in mod_form.php.
- * @param stackview_mod_form $mform          The form.
+ * @param object $moduleinstance    An object from the form in mod_form.php.
+ * @param stackview_mod_form $mform The form.
  *
  * @return bool True if successful, false otherwise.
  * @throws dml_exception
@@ -129,20 +129,21 @@ function stackview_get_file_areas($course, $cm, $context) {
 /**
  * Serves the files from the mod_stackview file areas.
  *
- * @param stdClass $course        The course object.
- * @param stdClass $cm            The course module object.
- * @param stdClass $context       The mod_stackview's context.
- * @param string   $filearea      The name of the file area.
- * @param array    $args          Extra arguments (itemid, path).
- * @param bool     $forcedownload Whether or not force download.
- * @param array    $options       Additional options affecting the file serving.
+ * @param stdClass $course    The course object.
+ * @param stdClass $cm        The course module object.
+ * @param stdClass $context   The mod_stackview's context.
+ * @param string $filearea    The name of the file area.
+ * @param array $args         Extra arguments (itemid, path).
+ * @param bool $forcedownload Whether or not force download.
+ * @param array $options      Additional options affecting the file serving.
  *
  * @return bool
  * @throws \coding_exception
  * @package     mod_stackview
  * @category    files
  */
-function stackview_pluginfile(object $course, object $cm, $context, $filearea, $args, $forcedownload, array $options = []) {
+function stackview_pluginfile(object $course, object $cm, $context, $filearea, $args, $forcedownload,
+    array $options = []) {
 
     if ($context->contextlevel != CONTEXT_MODULE) {
         return false;
@@ -153,7 +154,7 @@ function stackview_pluginfile(object $course, object $cm, $context, $filearea, $
         return false;
     }
 
-    $itemid = (int)array_shift($args);
+    $itemid = (int) array_shift($args);
 
     $fs = get_file_storage();
     $relativepath = implode('/', $args);
@@ -171,7 +172,7 @@ function stackview_pluginfile(object $course, object $cm, $context, $filearea, $
  * stackview_extend_settings_navigation
  *
  * @param \settings_navigation $settings
- * @param \navigation_node     $stacknode
+ * @param \navigation_node $stacknode
  *
  * @throws \coding_exception
  * @throws \moodle_exception

@@ -42,7 +42,7 @@ class restore_stackview_activity_structure_step extends restore_activity_structu
      *
      * @return restore_path_element[].
      */
-    protected function define_structure() : array {
+    protected function define_structure(): array {
         $paths = [];
         $paths[] = new restore_path_element('stackview', '/activity/stackview');
 
@@ -58,10 +58,10 @@ class restore_stackview_activity_structure_step extends restore_activity_structu
      * @throws base_step_exception
      * @throws dml_exception
      */
-    protected function process_stackview($data) : void {
+    protected function process_stackview($data): void {
         global $DB;
 
-        $data = (object)$data;
+        $data = (object) $data;
         $data->course = $this->get_courseid();
 
         $newitemid = $DB->insert_record('stackview', $data);
@@ -72,7 +72,8 @@ class restore_stackview_activity_structure_step extends restore_activity_structu
     /**
      * after_execute
      */
-    protected function after_execute() : void {
+    protected function after_execute(): void {
         $this->add_related_files('mod_stackview', 'slide', null);
     }
+
 }

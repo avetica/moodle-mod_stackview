@@ -49,8 +49,7 @@ if ($id) {
 $modulecontext = context_module::instance($cm->id);
 
 require_login($course, true, $cm);
-require_capability('mod/stackview:view' , $modulecontext);
-
+require_capability('mod/stackview:view', $modulecontext);
 
 $event = \mod_stackview\event\course_module_viewed::create([
     'objectid' => $stackview->id,
@@ -82,7 +81,7 @@ $PAGE->requires->js_call_amd('mod_stackview/stackview', 'init', [
 switch ($action) {
     case 'embedded':
 
-        $PAGE->requires->js('/mod/stackview/javascript/iframe.content.js' , true);
+        $PAGE->requires->js('/mod/stackview/javascript/iframe.content.js', true);
         $PAGE->set_pagelayout('popup');
 
         echo $OUTPUT->header();

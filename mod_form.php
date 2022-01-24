@@ -44,7 +44,7 @@ class mod_stackview_mod_form extends moodleform_mod {
      *
      * @throws coding_exception
      */
-    public function definition() : void {
+    public function definition(): void {
         global $CFG;
 
         $mform = $this->_form;
@@ -77,4 +77,5 @@ class mod_stackview_mod_form extends moodleform_mod {
         // Add standard buttons.
         $this->add_action_buttons();
     }
+
 }

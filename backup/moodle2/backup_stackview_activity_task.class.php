@@ -51,7 +51,7 @@ class backup_stackview_activity_task extends backup_activity_task {
      *
      * @throws base_task_exception
      */
-    protected function define_my_steps() : void {
+    protected function define_my_steps(): void {
         $this->add_step(new backup_stackview_activity_structure_step('stackview_structure', 'stackview.xml'));
     }
 
@@ -62,7 +62,7 @@ class backup_stackview_activity_task extends backup_activity_task {
      *
      * @return string.
      */
-    public static function encode_content_links($content) : string {
+    public static function encode_content_links($content): string {
         global $CFG;
 
         $base = preg_quote($CFG->wwwroot, "/");
@@ -77,4 +77,5 @@ class backup_stackview_activity_task extends backup_activity_task {
 
         return $content;
     }
+
 }

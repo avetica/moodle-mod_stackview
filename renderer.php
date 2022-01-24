@@ -60,11 +60,11 @@ class mod_stackview_renderer extends plugin_renderer_base {
      * @return string
      * @throws \coding_exception
      */
-    public function show_filter_code(\mod_stackview\stack $stack) : string {
+    public function show_filter_code(\mod_stackview\stack $stack): string {
         global $PAGE;
 
         if (has_capability('mod/stackview:management', $PAGE->cm->context)) {
-            return html_writer::div($stack->get_filter_code() , 'stackviewer-embedcode');
+            return html_writer::div($stack->get_filter_code(), 'stackviewer-embedcode');
         }
 
         return '';
@@ -78,7 +78,7 @@ class mod_stackview_renderer extends plugin_renderer_base {
      * @return string
      * @throws \moodle_exception
      */
-    public function get_table_stack_images(\mod_stackview\stack $stack) : string{
+    public function get_table_stack_images(\mod_stackview\stack $stack): string {
         $context = (new \mod_stackview\output\stackview_images_output($stack))
             ->export_for_template($this);
 

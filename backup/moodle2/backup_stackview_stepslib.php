@@ -46,7 +46,7 @@ class backup_stackview_activity_structure_step extends backup_activity_structure
      * @throws base_element_struct_exception
      * @throws base_step_exception
      */
-    protected function define_structure() : backup_nested_element {
+    protected function define_structure(): backup_nested_element {
 
         // Define each element separated.
         $stackview = new backup_nested_element('stackview', ['id'], [
@@ -65,4 +65,5 @@ class backup_stackview_activity_structure_step extends backup_activity_structure
         // Return the root element (stackview), wrapped into standard activity structure.
         return $this->prepare_activity_structure($stackview);
     }
+
 }
