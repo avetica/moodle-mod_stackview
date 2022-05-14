@@ -1,6 +1,20 @@
-# MFreak - mod_stackview
+# Moodle - mod_stackview
 
-With the Stackview module you can create a scrollable images activity. 
+Stackviewer is a course activity plugin which allows teachers to display images as a stack. The
+student can scroll through the stack of images, similar to using radiological DICOM software to
+research medical imagery. Its intended purpose is for medical education displaying Ultrasound, MRI
+and CT radiology imagery for diagnostic purposes. But other educational applications can well be
+imagined. The images in the stack are automatically numbered so that an educational dialogue can
+be conducted regarding the presented images in the stack.
+Stackviewer can be presented at any desired place in a course using Filter Embed Code. Accepted file
+types are JPEG, PNG, SVG and GIF. Images will be presented in alphabetical order A-Z 1-9. There is no
+limit to the number of images or to the file size. To improve performance, consider the student’s
+available bandwidth and device screen size. Using a HD (High Definition) image size of 1280 pixels x
+720 pixels as a maximum standard is recommended. Plugin translations available in English and
+Dutch.
+The development of Stackviewer was commissioned by the Association of Medical Specialists in The
+Netherlands https://demedischspecialist.nl Now available to the community of medical teachers
+around the world.
 
 ![Stackview](pix/stackview.png)
 
