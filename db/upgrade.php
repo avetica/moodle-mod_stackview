@@ -25,6 +25,7 @@
  **/
 
 /**
+ * xmldb_stackview_upgrade
  *
  * @param int $oldversion
  * @return bool
