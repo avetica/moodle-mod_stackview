@@ -33,8 +33,7 @@ around the world.
 
 ##### Tested in:
 
-![moodle394](https://img.shields.io/badge/moodle-3.94-blue.svg)
-![workplace39](https://img.shields.io/badge/workplace-3.9-blue.svg)
+![moodle39](https://img.shields.io/badge/moodle-3.9-green.svg)
 
 ### Installation
 
@@ -46,12 +45,16 @@ around the world.
 
 ##### Requirements:
 
-* Recommended Moodle version: **3.9 Workplace**
-* Recommended PHP version: **7.2**
-* Required Moodle version: **3.9 Moodle / 3.9 Workplac**
-* Required PHP version: **7.2**
+* Recommended Moodle version: **Moodle 3.9**
+* Recommended PHP version: **7.4**
+* Required Moodle version: **Moodle 3.9**
+* Required PHP version: **7.4**
 ---
 ### Changelog
+
+##### 3.9.2 (15.05.2022)
+* Remove unnecessary files
+* Don't load dependencies from other places
 
 ##### 3.9.1 (26.07.2021)
 * Add navigation buttons and allow touch events.
