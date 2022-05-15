@@ -1,4 +1,106 @@
-@import 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css';
+#page-mod-stackview-view .slick-slider {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#page-mod-stackview-view .slick-list {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+#page-mod-stackview-view .slick-list:focus {
+    outline: none;
+}
+
+#page-mod-stackview-view .slick-list.dragging {
+    cursor: pointer;
+}
+
+#page-mod-stackview-view .slick-slider .slick-track,
+#page-mod-stackview-view .slick-slider .slick-list {
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+#page-mod-stackview-view .slick-track {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#page-mod-stackview-view .slick-track:before,
+#page-mod-stackview-view .slick-track:after {
+    display: table;
+    content: "";
+}
+
+#page-mod-stackview-view .slick-track:after {
+    clear: both;
+}
+
+#page-mod-stackview-view .slick-loading .slick-track {
+    visibility: hidden;
+}
+
+#page-mod-stackview-view .slick-slide {
+    display: none;
+    float: left;
+    height: 100%;
+    min-height: 1px;
+}
+
+#page-mod-stackview-view [dir=rtl] .slick-slide {
+    float: right;
+}
+
+#page-mod-stackview-view .slick-slide img {
+    display: block;
+}
+
+#page-mod-stackview-view .slick-slide.slick-loading img {
+    display: none;
+}
+
+#page-mod-stackview-view .slick-slide.dragging img {
+    pointer-events: none;
+}
+
+#page-mod-stackview-view .slick-initialized .slick-slide {
+    display: block;
+}
+
+#page-mod-stackview-view .slick-loading .slick-slide {
+    visibility: hidden;
+}
+
+#page-mod-stackview-view .slick-vertical .slick-slide {
+    display: block;
+    height: auto;
+    border: 1px solid transparent;
+}
+
+#page-mod-stackview-view .slick-arrow.slick-hidden {
+    display: none;
+}
 
 #page-mod-stackview-view .stackviewer {
     background: #000;
@@ -90,7 +192,7 @@
     position: absolute;
     right: -20px;
     top: 50%;
-    transform: translatey(-50%);
+    transform: translateY(-50%);
     list-style: none;
     text-align: center;
     height: 100%;
@@ -134,7 +236,8 @@
     display: block;
 }
 
-#page-mod-stackview-view .stackviewer .slick-prev, #page-mod-stackview-view .stackviewer .slick-next {
+#page-mod-stackview-view .stackviewer .slick-prev,
+#page-mod-stackview-view .stackviewer .slick-next {
     height: 20px;
     width: 20px;
     background-size: contain;
@@ -148,7 +251,8 @@
     background-color: #fff;
 }
 
-#page-mod-stackview-view.pagelayout-popup #page, #page-mod-stackview-view.pagelayout-popup #region-main-box {
+#page-mod-stackview-view.pagelayout-popup #page,
+#page-mod-stackview-view.pagelayout-popup #region-main-box {
     margin: 0;
     padding: 0;
 }
@@ -196,5 +300,3 @@
     visibility: visible;
     opacity: 1;
 }
-
-/*# sourcemappingurl=styles.css.map */

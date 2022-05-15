@@ -15,6 +15,7 @@
 
 /**
  * Javascript for needed to load the stackviewer
+ * @TODO rewrite to ES6 uses old jQuery (slick uses jQuery need more time to rewrite)
  *
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
@@ -22,13 +23,18 @@
  * @copyright 09/05/2021 Mfreak.nl | LdesignMedia.nl - Luuk Verhoeven
  * @author    Luuk Verhoeven
  **/
-/*eslint-disable no-console*/
-define(['jquery', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js'], function ($) {
+
+define(['jquery', 'mod_stackview/slick'], function ($) {
 
     'use strict';
 
     let $slick = $('#slick-slider');
 
+    /**
+     * copyToClipboard
+     *
+     * @param {string} containerid
+     */
     let copyToClipboard = function (containerid) {
 
         const el = document.createElement('textarea');
@@ -161,8 +167,6 @@ define(['jquery', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.j
 
     return {
         init: function () {
-            // eslint-disable-next-line
-            console.log('Load Stackviewer v3.9.2 (based on slick.js)');
             loadSlick();
         }
     };
