@@ -18,8 +18,6 @@
  * @TODO rewrite to ES6 uses old jQuery (slick uses jQuery need more time to rewrite)
  *
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- *
- * @package   mod_stackview
  * @copyright 09/05/2021 Mfreak.nl | LdesignMedia.nl - Luuk Verhoeven
  * @author    Luuk Verhoeven
  **/
