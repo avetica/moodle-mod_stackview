@@ -7,4 +7,11 @@
         <license>MIT</license>
         <licenseversion></licenseversion>
     </library>
+    <library>
+        <location>amd/slick.js</location>
+        <name>slick-carousel</name>
+        <version>1.8.1</version>
+        <license>MIT</license>
+        <licenseversion></licenseversion>
+    </library>
 </libraries>
