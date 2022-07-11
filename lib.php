@@ -123,13 +123,13 @@ function stackview_get_file_areas($course, $cm, $context) {
 /**
  * Serves the files from the mod_stackview file areas.
  *
- * @param object $course The course object.
- * @param object $cm     The course module object.
- * @param object $context       The mod_stackview's context.
- * @param string $filearea      The name of the file area.
- * @param array $args          Extra arguments (itemid, path).
+ * @param object $course      The course object.
+ * @param object $cm          The course module object.
+ * @param object $context     The mod_stackview's context.
+ * @param string $filearea    The name of the file area.
+ * @param array $args         Extra arguments (itemid, path).
  * @param bool $forcedownload Whether or not force download.
- * @param array $options Additional options affecting the file serving.
+ * @param array $options      Additional options affecting the file serving.
  *
  * @return false|void
  * @throws coding_exception
@@ -141,8 +141,11 @@ function stackview_pluginfile(object $course, object $cm, $context, $filearea, $
         return false;
     }
 
-    require_course_login($course, true, $cm);
     if (!has_capability('mod/stackview:view', $context)) {
+        return false;
+    }
+
+    if (!is_enrolled($context)) {
         return false;
     }
 
