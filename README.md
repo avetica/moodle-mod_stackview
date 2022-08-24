@@ -52,6 +52,10 @@ around the world.
 ---
 ### Changelog
 
+##### 3.9.3 (24.08.2022)
+* Solved dutch text in english lang file. #2
+* Solved `slick.js` missing from thirdpartylilbs.xml #1
+
 ##### 3.9.2 (15.05.2022)
 * Remove unnecessary files
 * Don't load dependencies from other places
