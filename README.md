@@ -52,6 +52,9 @@ around the world.
 ---
 ### Changelog
 
+##### 3.9.6 (24.08.2022)
+- Update code style to trigger less errors.
+
 ##### 3.9.3 (24.08.2022)
 * Solved dutch text in english lang file. #2
 * Solved `slick.js` missing from thirdpartylilbs.xml #1
