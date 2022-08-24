@@ -22,18 +22,18 @@
  * @author    Luuk Verhoeven
  **/
 
-define(['jquery', 'mod_stackview/slick'], function ($) {
+define(['jquery', 'mod_stackview/slick'], function($) {
 
     'use strict';
 
     let $slick = $('#slick-slider');
 
     /**
-     * copyToClipboard
+     * CopyToClipboard
      *
      * @param {string} containerid
      */
-    let copyToClipboard = function (containerid) {
+    let copyToClipboard = function(containerid) {
 
         const el = document.createElement('textarea');
         el.value = document.getElementById(containerid).innerHTML;
@@ -48,12 +48,12 @@ define(['jquery', 'mod_stackview/slick'], function ($) {
         alert("Copied to clipboard");
     };
 
-    let loadSlick = function () {
+    let loadSlick = function() {
 
         $.fn.extend({
-            disableSelection: function () {
-                this.each(function () {
-                    this.onselectstart = function () {
+            disableSelection: function() {
+                this.each(function() {
+                    this.onselectstart = function() {
                         return false;
                     };
                     this.unselectable = "on";
@@ -64,9 +64,9 @@ define(['jquery', 'mod_stackview/slick'], function ($) {
             }
         });
 
-        $(document).ready(function () {
+        $(document).ready(function() {
 
-            $slick.on('init reInit afterChange', function (event, slick, currentSlide) {
+            $slick.on('init reInit afterChange', function(event, slick, currentSlide) {
                 let i = (currentSlide ? currentSlide : 0) + 1;
                 let calc = ((i) / (slick.slideCount)) * 100;
 
@@ -86,7 +86,7 @@ define(['jquery', 'mod_stackview/slick'], function ($) {
                 swipeToSlide: false,
             });
 
-            slider.on('wheel click', (function (e) {
+            slider.on('wheel click', (function(e) {
                 e.preventDefault();
                 let $el = $(this);
 
@@ -106,65 +106,65 @@ define(['jquery', 'mod_stackview/slick'], function ($) {
             }));
 
             $('.slick-list').before('<span class="previous-slide"><i class="fa fa-angle-up"></i></span>' +
-                '<span id="slick-counter">1/' + $slick.slick("getSlick").slideCount + '</span>' +
-                '<div id="slick-progressbar"></div>' +
+                '<span id="slick-counter">1/' + $slick.slick("getSlick").slideCount +
+                '</span>' + '<div id="slick-progressbar"></div>' +
                 '<span class="next-slide"><i class="fa fa-angle-down"></i></span>');
 
             $('body').disableSelection();
 
             let touchCounter;
-            $('.previous-slide').on('touchstart', (function () {
-                touchCounter = setInterval(function () {
+            $('.previous-slide').on('touchstart', (function() {
+                touchCounter = setInterval(function() {
                     $slick.slick('slickPrev');
                 }, 200);
-            })).on('touchend', (function () {
+            })).on('touchend', (function() {
                 clearInterval(touchCounter);
                 touchCounter = null;
-            })).on("mousedown", function () {
+            })).on("mousedown", function() {
                 $slick.slick('slickPrev');
             });
 
-            $('.next-slide').on('touchstart', (function () {
-                touchCounter = setInterval(function () {
+            $('.next-slide').on('touchstart', (function() {
+                touchCounter = setInterval(function() {
                     $slick.slick('slickNext');
                 }, 200);
-            })).on('touchend', (function () {
+            })).on('touchend', (function() {
                 clearInterval(touchCounter);
                 touchCounter = null;
-            })).on("mousedown", function () {
+            })).on("mousedown", function() {
                 $slick.slick('slickNext');
             });
 
             // Mouse click and hold.
             let clickTimeout = 0;
-            $('.next-slide').on('mousedown', function () {
-                clickTimeout = setInterval(function () {
+            $('.next-slide').on('mousedown', function() {
+                clickTimeout = setInterval(function() {
                     $slick.slick('slickNext');
                 }, 200);
-            }).on('mouseup mouseleave', function () {
+            }).on('mouseup mouseleave', function() {
                 clearTimeout(clickTimeout);
             });
 
-            $('.previous-slide').on('mousedown', function () {
-                clickTimeout = setInterval(function () {
+            $('.previous-slide').on('mousedown', function() {
+                clickTimeout = setInterval(function() {
                     $slick.slick('slickPrev');
                 }, 200);
-            }).on('mouseup mouseleave', function () {
+            }).on('mouseup mouseleave', function() {
                 clearTimeout(clickTimeout);
             });
 
-            $(window).on('resize orientationchange', function () {
+            $(window).on('resize orientationchange', function() {
                 $slick.slick('resize');
             });
 
-            $('.stackviewer-embedcode').on('click', function () {
+            $('.stackviewer-embedcode').on('click', function() {
                 copyToClipboard("stack-code");
             });
         });
     };
 
     return {
-        init: function () {
+        init: function() {
             loadSlick();
         }
     };

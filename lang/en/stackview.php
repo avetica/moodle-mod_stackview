@@ -27,7 +27,7 @@ defined('MOODLE_INTERNAL') || die;
 
 $string['pluginname'] = 'Stackviewer';
 $string['modulename'] = 'Stackviewer';
-$string['modulename_help'] =  'The Stackviewer allows the course developer to present radiological images. The student
+$string['modulename_help'] = 'The Stackviewer allows the course developer to present radiological images. The student
 can scroll through the images, similar to using radiologic software. The images are numbered
 so that a dialogue can take place about the presented image. The Stackviewer can be placed anywhere
 integrated into a course. Accepted file types: JPEG, PNG, SVG, GIF.';
