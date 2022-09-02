@@ -145,7 +145,7 @@ function stackview_pluginfile(object $course, object $cm, $context, $filearea, $
         return false;
     }
 
-    if (!is_enrolled($context)) {
+    if (!is_enrolled($context) && !has_capability('moodle/site:config' , context_system::instance())) {
         return false;
     }
 
