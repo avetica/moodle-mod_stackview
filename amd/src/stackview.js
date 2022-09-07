@@ -22,6 +22,7 @@
  * @author    Luuk Verhoeven
  **/
 
+/* eslint-disable no-alert */
 define(['jquery', 'mod_stackview/slick'], function($) {
 
     'use strict';
