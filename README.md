@@ -16,7 +16,7 @@ The development of Stackviewer was commissioned by the Association of Medical Sp
 Netherlands https://demedischspecialist.nl Now available to the community of medical teachers
 around the world.
 
-![Stackview](pix/stackview.png)
+![Stackview](pix/screenshot.gif)
 
 ##### Features:
 
