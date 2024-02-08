@@ -125,7 +125,7 @@ function stackview_get_file_areas($course, $cm, $context) {
  *
  * @param object $course      The course object.
  * @param object $cm          The course module object.
- * @param object $context     The mod_stackview's context.
+ * @param context $context    The mod_stackview's context.
  * @param string $filearea    The name of the file area.
  * @param array $args         Extra arguments (itemid, path).
  * @param bool $forcedownload Whether or not force download.
@@ -134,18 +134,23 @@ function stackview_get_file_areas($course, $cm, $context) {
  * @return false|void
  * @throws coding_exception
  */
-function stackview_pluginfile(object $course, object $cm, $context, $filearea, $args, $forcedownload,
-    array $options = []) {
+function stackview_pluginfile(
+    object $course,
+    object $cm,
+    $context,
+    $filearea,
+    $args,
+    $forcedownload,
+    array $options = []
+) {
 
-    if ($context->contextlevel != CONTEXT_MODULE) {
+    if ($context->contextlevel !== CONTEXT_MODULE) {
         return false;
     }
+
+    require_course_login($course, true, $cm);
 
     if (!has_capability('mod/stackview:view', $context)) {
-        return false;
-    }
-
-    if (!is_enrolled($context) && !has_capability('moodle/site:config' , context_system::instance())) {
         return false;
     }
 
@@ -186,9 +191,13 @@ function stackview_extend_settings_navigation(settings_navigation $settings, nav
 
     if (has_capability('mod/stackview:management', $PAGE->cm->context)) {
         $url = new moodle_url('/mod/stackview/management.php', ['cmid' => $PAGE->cm->id]);
-        $node = navigation_node::create(get_string('btn:management', 'stackview'),
+        $node = navigation_node::create(
+            get_string('btn:management', 'stackview'),
             new moodle_url($url),
-            navigation_node::TYPE_SETTING, null, 'mod_stackview_management');
+            navigation_node::TYPE_SETTING,
+            null,
+            'mod_stackview_management'
+        );
         $stacknode->add_node($node, $beforekey);
     }
 
