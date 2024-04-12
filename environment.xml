@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <COMPATIBILITY_MATRIX>
     <PLUGIN name="mod_stackview">
-        <PHP version="7.2" level="required"/>
+        <PHP version="8.0" level="required"/>
     </PLUGIN>
 </COMPATIBILITY_MATRIX>
