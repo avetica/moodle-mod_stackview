@@ -33,6 +33,7 @@ around the world.
 
 ##### Tested in:
 
+![moodle43](https://img.shields.io/badge/moodle-4.3-green.svg)
 ![moodle39](https://img.shields.io/badge/moodle-3.9-green.svg)
 
 ### Installation
@@ -45,10 +46,10 @@ around the world.
 
 ##### Requirements:
 
-* Recommended Moodle version: **Moodle 3.9**
-* Recommended PHP version: **7.4**
-* Required Moodle version: **Moodle 3.9**
-* Required PHP version: **7.4**
+* Recommended Moodle version: **Moodle 4.3**
+* Recommended PHP version: **8.0**
+* Required Moodle version: **Moodle 4.3**
+* Required PHP version: **8.0**
 ---
 ### Changelog
 
