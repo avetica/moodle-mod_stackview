@@ -1,0 +1,46 @@
+test:
+  stage: test
+  variables:
+    DB: "mysqli"
+    MYSQL_ROOT_PASSWORD: "superrootpass"
+    TRAVIS_BUILD_DIR: "$CI_PROJECT_DIR"
+    # Moodle.
+    MOODLE_BRANCH: "MOODLE_403_STABLE"
+    MOODLE_REPO: https://github.com/moodle/moodle.git
+    # Behat.
+    MOODLE_BEHAT_WDHOST: "http://selenium-standalone-chrome:4444/wd/hub"
+    MOODLE_START_BEHAT_SERVERS: "NO"
+    IGNORE_PATHS: ""
+    IGNORE_NAMES: ""
+    CODECHECKER_IGNORE_PATHS: ""
+    CODECHECKER_IGNORE_NAMES: ""
+  image: moodlehq/moodle-workplace-plugin-ci:7.4
+  services:
+    - mysql:latest
+    -   name: selenium/standalone-chrome:3
+        alias: selenium-standalone-chrome
+  tags:
+    - deploy01.avetica.net
+  before_script:
+    # Update packages and/or install.
+    - apt update && apt install -y mariadb-client
+    - cd $CI_PROJECT_DIR/..
+    - rm -rf moodle
+    # Install Moodle includes the setup of PHPUnit and Behat when tests exist in the plugin directory.
+    - export IPADDRESS=`grep "${HOSTNAME}$" /etc/hosts |awk '{print $1}'`
+    - export MOODLE_BEHAT_WWWROOT="http://${IPADDRESS}:8000"
+    - moodle-plugin-ci install --db-user=root --db-pass=superrootpass --db-host=mysql -vvv
+    - cd moodle
+    - php -S ${IPADDRESS}:8000 -t $CI_PROJECT_DIR/../moodle > /dev/null 2>&1 &
+  script:
+    - moodle-plugin-ci phplint
+    - moodle-plugin-ci phpcpd
+    - moodle-plugin-ci phpmd
+    - moodle-plugin-ci codechecker
+    - moodle-plugin-ci mustache
+    - moodle-plugin-ci validate
+    - moodle-plugin-ci savepoints
+    - moodle-plugin-ci grunt || true
+    - moodle-plugin-ci phpdoc
+    - moodle-plugin-ci phpunit
+    - moodle-plugin-ci behat --suite default --profile chrome
