@@ -24,6 +24,8 @@
  * @author    Luuk Verhoeven
  **/
 
+use tool_tenant\tenancy;
+
 /**
  * Class mod_stackview_renderer
  *
@@ -59,6 +61,17 @@ class mod_stackview_renderer extends plugin_renderer_base {
      * @throws \coding_exception
      */
     public function show_filter_code(\mod_stackview\stack $stack): string {
+        global $USER;
+
+        // Always allow for Tenant admins.
+        if (class_exists(tenancy::class)) {
+
+            // Check if the user is tenant admin.
+            $tenantid = tenancy::get_tenant_id();
+            if (\tool_tenant\manager::is_tenant_admin($tenantid, $USER->id)) {
+                return true;
+            }
+        }
 
         if (has_capability('mod/stackview:management', $this->page->cm->context)) {
             return html_writer::div($stack->get_filter_code(), 'stackviewer-embedcode');

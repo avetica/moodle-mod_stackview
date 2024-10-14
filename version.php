@@ -28,6 +28,6 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'mod_stackview';
 $plugin->release = '3.9.7';
-$plugin->version = 2024010200;
+$plugin->version = 2024101400;
 $plugin->requires = 2018051700;
 $plugin->maturity = MATURITY_STABLE;
