@@ -53,6 +53,9 @@ around the world.
 ---
 ### Changelog
 
+##### 4.3.0 (14.10.2024)
+- Update to show embedcode for tenant admins.
+
 ##### 3.9.6 (24.08.2022)
 - Update code style to trigger less errors.
 
