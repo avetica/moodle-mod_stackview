@@ -63,17 +63,19 @@ class mod_stackview_renderer extends plugin_renderer_base {
     public function show_filter_code(\mod_stackview\stack $stack): string {
         global $USER;
 
+        $istenantadmin = false;
+
         // Always allow for Tenant admins.
         if (class_exists(tenancy::class)) {
 
             // Check if the user is tenant admin.
             $tenantid = tenancy::get_tenant_id();
             if (\tool_tenant\manager::is_tenant_admin($tenantid, $USER->id)) {
-                return true;
+                $istenantadmin = true;
             }
         }
 
-        if (has_capability('mod/stackview:management', $this->page->cm->context)) {
+        if (has_capability('mod/stackview:management', $this->page->cm->context) || $istenantadmin) {
             return html_writer::div($stack->get_filter_code(), 'stackviewer-embedcode');
         }
 
