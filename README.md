@@ -33,6 +33,7 @@ around the world.
 
 ##### Tested in:
 
+![moodle45](https://img.shields.io/badge/moodle-4.5-green.svg)
 ![moodle43](https://img.shields.io/badge/moodle-4.3-green.svg)
 ![moodle39](https://img.shields.io/badge/moodle-3.9-green.svg)
 
@@ -46,12 +47,17 @@ around the world.
 
 ##### Requirements:
 
-* Recommended Moodle version: **Moodle 4.3**
-* Recommended PHP version: **8.0**
+* Recommended Moodle version: **Moodle 4.5**
+* Recommended PHP version: **8.1**
 * Required Moodle version: **Moodle 4.3**
 * Required PHP version: **8.0**
 ---
 ### Changelog
+
+##### 4.5.0 (16.10.2025)
+- Update plugin to support Moodle 4.5
+- Add comprehensive type hints to all function parameters and return types
+- Improve PHPDoc blocks with proper formatting and documentation
 
 ##### 4.3.0 (14.10.2024)
 - Update to show embedcode for tenant admins.
@@ -88,7 +94,7 @@ the [LICENSE](LICENSE) file.
 
 <img src="https://avetica.nl/logo.svg" alt="avetica logo" width="250px">
 
-Copyright © 2021 Avetica :: [avetica.nl](https://avetica.nl/)
+Copyright © 2025 Avetica :: [avetica.nl](https://avetica.nl/)
 
 ##### Author:
 * Luuk Verhoeven :: [Ldesign Media](https://ldesignmedia.nl/) - [luuk@ldesignmedia.nl](luuk@ldesignmedia.nl)
