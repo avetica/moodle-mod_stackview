@@ -20,8 +20,8 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  * @package   mod_stackview
- * @copyright 16/10/2025 Mfreak.nl | LdesignMedia.nl - Luuk Verhoeven
- * @author    Hamza Tamyachte
+ * @copyright 09/05/2021 Mfreak.nl | LdesignMedia.nl - Luuk Verhoeven
+ * @author    Luuk Verhoeven
  **/
 
 defined('MOODLE_INTERNAL') || die();
@@ -29,5 +29,5 @@ defined('MOODLE_INTERNAL') || die();
 $plugin->component = 'mod_stackview';
 $plugin->release = '4.5.0';
 $plugin->version = 2025101600;
-$plugin->requires = 2024100700; // Moodle 4.5.
+$plugin->requires = 2018051700;
 $plugin->maturity = MATURITY_STABLE;
