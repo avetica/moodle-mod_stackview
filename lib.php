@@ -29,9 +29,9 @@
  *
  * @param string $feature Constant representing the feature.
  *
- * @return true | null True if the feature is supported, null otherwise.
+ * @return bool|null True if the feature is supported, null otherwise.
  */
-function stackview_supports($feature) {
+function stackview_supports(string $feature): ?bool {
     switch ($feature) {
         case FEATURE_MOD_INTRO:
         case FEATURE_SHOW_DESCRIPTION:
@@ -54,7 +54,7 @@ function stackview_supports($feature) {
  *
  * @return int The id of the newly inserted record.
  */
-function stackview_add_instance(object $moduleinstance, mod_stackview_mod_form $mform) {
+function stackview_add_instance(object $moduleinstance, mod_stackview_mod_form $mform): int {
     global $DB;
     $moduleinstance->timecreated = time();
 
@@ -68,12 +68,12 @@ function stackview_add_instance(object $moduleinstance, mod_stackview_mod_form $
  * this function will update an existing instance with new data.
  *
  * @param object $moduleinstance    An object from the form in mod_form.php.
- * @param stackview_mod_form $mform The form.
+ * @param mod_stackview_mod_form|null $mform The form.
  *
  * @return bool True if successful, false otherwise.
  * @throws dml_exception
  */
-function stackview_update_instance($moduleinstance, $mform = null) {
+function stackview_update_instance(object $moduleinstance, ?mod_stackview_mod_form $mform = null): bool {
     global $DB;
 
     $moduleinstance->has_horizontal_ruler = !empty($moduleinstance->has_horizontal_ruler);
@@ -91,7 +91,7 @@ function stackview_update_instance($moduleinstance, $mform = null) {
  * @return bool True if successful, false on failure.
  * @throws dml_exception
  */
-function stackview_delete_instance($id) {
+function stackview_delete_instance(int $id): bool {
     global $DB;
 
     $exists = $DB->get_record('stackview', ['id' => $id]);
@@ -114,7 +114,7 @@ function stackview_delete_instance($id) {
  *
  * @return string[]
  */
-function stackview_get_file_areas($course, $cm, $context) {
+function stackview_get_file_areas(object $course, object $cm, object $context): array {
     return [
         'slides' => 'slides',
     ];
@@ -131,18 +131,18 @@ function stackview_get_file_areas($course, $cm, $context) {
  * @param bool $forcedownload Whether or not force download.
  * @param array $options      Additional options affecting the file serving.
  *
- * @return false|void
+ * @return bool False if file not found or access denied.
  * @throws coding_exception
  */
 function stackview_pluginfile(
     object $course,
     object $cm,
-    $context,
-    $filearea,
-    $args,
-    $forcedownload,
+    context $context,
+    string $filearea,
+    array $args,
+    bool $forcedownload,
     array $options = []
-) {
+): bool {
 
     if ($context->contextlevel !== CONTEXT_MODULE) {
         return false;
@@ -166,18 +166,20 @@ function stackview_pluginfile(
     // Finally send the file.
     // For folder module, we force download file all the time.
     send_stored_file($file, 0, 0, true, $options);
+
+    return true;
 }
 
 /**
- * stackview_extend_settings_navigation
+ * Extend the settings navigation with plugin-specific navigation nodes.
  *
- * @param \settings_navigation $settings
- * @param \navigation_node $stacknode
+ * @param settings_navigation $settings The settings navigation object.
+ * @param navigation_node $stacknode The navigation node to extend.
  *
- * @throws \coding_exception
- * @throws \moodle_exception
+ * @throws coding_exception
+ * @throws moodle_exception
  */
-function stackview_extend_settings_navigation(settings_navigation $settings, navigation_node $stacknode) {
+function stackview_extend_settings_navigation(settings_navigation $settings, navigation_node $stacknode): void {
     global $PAGE;
 
     $keys = $stacknode->get_children_key_list();
@@ -200,5 +202,4 @@ function stackview_extend_settings_navigation(settings_navigation $settings, nav
         );
         $stacknode->add_node($node, $beforekey);
     }
-
 }
